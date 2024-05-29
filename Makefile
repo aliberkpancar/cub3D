@@ -1,34 +1,34 @@
-NAME = cub3d
+NAME = cub3D
 
-SOURCES = main.c camera.c init.c 
+SOURCES = ./src/main.c ./src/map_parser.c ./src/map.c ./src/gnl/get_next_line.c ./src/gnl/get_next_line_utils.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
-CC = gcc
+CC = clang
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 MLX = mlx/libmlx.a
 
-GNL = ./includes/gnl/get_next_line.a
-
 LIBRARIES = -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+HEADERS = ./includes/cub3d.h ./includes/map_parser.h ./includes/get_next_line.h
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(MLX) $(GNL) 
-	$(CC) $(CFLAGS) $(LIBRARIES) $(GNL) $(OBJECTS) -o $(NAME)  
+$(NAME): $(OBJECTS) $(MLX)
+	$(CC) $(CFLAGS) $(LIBRARIES) $(OBJECTS) -o $(NAME)
 
 $(MLX):
 	make -C mlx
 
 $(GNL):
-	make -C includes/gnl
+	make -C includes
 
 clean:
 	rm -f $(OBJECTS)
 	make -C mlx clean
-	make -C includes/gnl clean
+	make -C includes clean
 
 fclean: clean
 	rm -f $(NAME)
