@@ -1,170 +1,127 @@
-# ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_H
+#define CUB3D_H
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <math.h>
-# include "mlx/mlx.h"
+#include "../mlx/mlx.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <string.h> //delete
+#include "../gnl/get_next_line.h"
 
-# define MOVE_SPEED 0.05
-# define ROT_SPEED 0.03
-# define MAP_WIDTH 5
-# define MAP_HEIGHT 5
-# define M_WIDTH 40
-# define M_HEIGHT 30
+#define WIN_WIDTH 800
+#define WIN_HEIGHT 600
 
-# define W_KEY 13
-# define A_KEY 0
-# define S_KEY 1
-# define D_KEY 2
-# define ESC_KEY 53
-# define E_KEY 14
-# define LEFT_ARROW 123
-# define RIGHT_ARROW 124
-# define TILE_SIZE 16
-# define TOTAL_RAYS 1280
-# define PLAYER_SIZE 5
-# define TOTAL_TEXTURES 14
-# define SCREENHEIGHT 512
-# define SCREENWIDTH 1280
-# define MINIMAPWIDTH 7
-# define MINIMAPHEIGHT 7
+#define MOVE_SPEED 0.1
+#define ROTATE_SPEED 0.05
 
-# define WIN_WIDTH 640
-# define WIN_HEIGHT 480
+#define MAP_WIDTH 42
+#define MAP_HEIGHT 42
 
-typedef int	t_bool;
-
-typedef struct s_camera {
-	double	posY;
-	double	posX;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
-} t_camera;
-
-typedef struct s_ray
+typedef struct	s_player
 {
-	double		posx;
-	double		posy;
-	double		dirx;
-	double		diry;
-	double		planex;
-	double		planey;
-	int64_t		key_w;
-	int64_t		key_s;
-	int64_t		key_left;
-	int64_t		key_right;
-	double		camerax;
-	double		raydirx;
-	double		raydiry;
-	double		deltadistx;
-	double		deltadisty;
-	int64_t		map_x;
-	int64_t		map_y;
-	int64_t		stepx;
-	int64_t		stepy;
-	double		sidedistx;
-	double		sidedisty;
-	int64_t		wall;
-	int64_t		side;
-	double		perpwalldist;
-	int64_t		lineheight;
-	int64_t		drawstart;
-	int64_t		drawend;
-	int64_t		tex_x;
-	int64_t		texnum;
-	double		texstep;
-	double		texpos;
-	int64_t		key_a;
-	int64_t		key_d;
-	int64_t		user_x;
-	int64_t		user_y;
-}	t_ray;
+	float	x;
+	float	y;
+	float	dir_x;
+	float	dir_y;
+	float	plane_x;
+	float	plane_y;
+}			t_player;
 
-typedef struct s_player {
-	char	*image;
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
-} t_player;
-
-typedef struct s_map
+typedef struct	s_texture
 {
-	int64_t	rows;
-	int64_t	mini_rows;
-	int64_t	cols;
-	int64_t	map_x;
-	int64_t	map_s;
-	int64_t	map_y;
-	char	**floor;
-	char	**ceiling;
-	int		floor_color;
-	int		ceiling_color;
-	char	**map;
-	char	**flood_fill;
-	char	**wall_textures;
-	char	*floor_str;
-	char	*ceiling_str;
-	char	*map_str;
-}				t_map;
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+	void	*north_image;
+	void	*south_image;
+	void	*west_image;
+	void	*east_image;
+	int		north_width;
+	int		north_height;
+	int		south_width;
+	int		south_height;
+	int		west_width;
+	int		west_height;
+	int		east_width;
+	int		east_height;
+}			t_texture;
 
-typedef struct s_game
+typedef struct	s_image
 {
-	int64_t		width;
-	int64_t		height;
-	void 		*mlx;
-	void 		*win;
-	void 		*img;
-	double		posX;
-	double		posY;
-	double		dirX;
-	double		dirY;
-	double		planeX;
-	double		planeY;
-	char		*no;
-	char		*so;
-	char		*we;
-	char		*ea;
-	void		*mlx_ptr;
-	void		*win_ptr;
-	void		*mlx_img;
-	int			*mlx_o_data;
-	char		*map_path;
-	int			map_fd;
-	t_bool		w_pressed;
-	t_bool		a_pressed;
-	t_bool		s_pressed;
-	t_bool		d_pressed;
-	t_bool		e_pressed;
-	t_bool		is_door_open;
-	t_bool		left_pressed;
-	t_bool		right_pressed;
-	t_bool		left_mouse_pressed;
-	t_bool		right_mouse_pressed;
-	t_ray		*ray;
-	t_camera	*cam;
-	t_player	*player;
-	t_map		*mini_map;
-	t_map		*map;
-} 				t_game;
+	void	*image;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	struct s_texture	texture;
+}			t_image;
 
 
-//main.c
-void	ft_putstr_fd(char *s, int fd);
-int64_t init_map(t_game *game);
-int64_t	init_game(t_game *game, const char *file_path);
-// void	run_game(t_game *game);
-// void	cleanup_game(t_game *game);
-void	error_exit(const char *message);
-// int64_t	ft_strlen(const char *str);
-void	ft_strlcpy(char *dst, const char *src, int64_t dstsize);
-int64_t init_game(t_game *game, const char *file_path);
+typedef struct	s_ray
+{
+	float	ray_dir_x;
+	float	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	float	side_dist_x;
+	float	side_dist_y;
+	float	delta_dist_x;
+	float	delta_dist_y;
+	float	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}			t_ray;
 
-# endif
+typedef struct	s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}		t_color;
+
+// check if rgb values are between 0 and 255
+// check if there are 3 values
+// check endianess
+
+typedef struct	s_vars
+{
+	void		*mlx;
+	void		*win;
+    double  	dir_x;
+	double		dir_y;
+	double  	pos_x;
+	double		pos_y;
+    double  	plane_x;
+	double		plane_y;
+	int			map_width;
+	int			map_height;
+	char		**map;
+	t_ray		ray;
+	t_color		floor;
+	t_image 	image;
+	t_player	player;
+	t_color		ceiling;
+	t_texture	textures;
+}				t_vars;
+
+// Function prototypes
+int		handle_input(int keycode, t_vars *vars);
+void	parse_map(char *file_path, t_vars *vars);
+void	rotate_player(t_player *player, float angle);
+void	move_player(t_vars *vars, float move_x, float move_y);
+void	render_scene(t_vars *vars);
+int     main_loop(t_vars *vars);
+void	get_dimensions(t_vars *vars, char *map_path);
+void	textre_calculation(t_vars *vars, int x);
+void	texture_init(t_vars *vars);
+void	my_mlx_pixel_put_int(t_image *image, int x, int y, int color);
+
+#endif

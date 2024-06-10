@@ -1,18 +1,19 @@
 NAME = cub3D
 
-SOURCES = ./src/main.c ./src/map_parser.c ./src/map.c ./src/gnl/get_next_line.c ./src/gnl/get_next_line_utils.c
+SOURCES = srcs/main.c srcs/parse.c srcs/render.c srcs/input.c gnl/get_next_line.c \
+	gnl/get_next_line_utils.c srcs/texture.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = clang
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g 
 
 MLX = mlx/libmlx.a
 
 LIBRARIES = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-HEADERS = ./includes/cub3d.h ./includes/map_parser.h ./includes/get_next_line.h
+HEADERS = ./includes/cub3d.h
 
 all: $(NAME)
 
@@ -22,13 +23,9 @@ $(NAME): $(OBJECTS) $(MLX)
 $(MLX):
 	make -C mlx
 
-$(GNL):
-	make -C includes
-
 clean:
 	rm -f $(OBJECTS)
 	make -C mlx clean
-	make -C includes clean
 
 fclean: clean
 	rm -f $(NAME)
