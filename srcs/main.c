@@ -3,6 +3,8 @@
 
 static void	init_var(t_vars *vars, char *map)
 {
+	int i;
+
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3D");
 	vars->image.image = mlx_new_image(vars->mlx, WIN_WIDTH, WIN_HEIGHT);
@@ -17,10 +19,23 @@ static void	init_var(t_vars *vars, char *map)
 	vars->map_height = 0;
 	get_dimensions(vars, map);
 	printf("Dimensions w: %d - h: %d\n", vars->map_width, vars->map_height);
-	vars->map = malloc(vars->map_width * sizeof(char *));
-	int i = 0;
-    while (i < vars->map_height)
-        vars->map[i++] = malloc(vars->map_width * sizeof(char));
+	vars->map = (char **)malloc(sizeof(char *) * vars->map_height);
+	if (!vars->map)
+	{
+		printf("Error\n");
+		exit(EXIT_FAILURE);
+	}
+	i = 0;
+	while (i < vars->map_height)
+	{
+		vars->map[i] = (char *)malloc(sizeof(char) * vars->map_width + 1);
+		if (!vars->map[i])
+		{
+			printf("Error\n");
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
 	vars->ray.side_dist_x = 0;
     vars->ray.side_dist_y = 0;
     vars->ray.delta_dist_x = 0;
@@ -88,27 +103,29 @@ static void init_player_pos(t_vars *vars)
 
 int main(int argc, char **argv)
 {
-	t_vars vars;
+	t_vars *vars;
 
 	if (argc != 2)
 		return (printf("Error\n"), 1); // check printf is allowed
-	init_var(&vars, argv[1]);
-	parse_map(argv[1], &vars);
-	init_player_pos(&vars);
+	vars = (t_vars *)malloc(sizeof(t_vars));
+	if (!vars)
+	{
+		printf("Error\n");
+		exit(EXIT_FAILURE);
+	}
+	init_var(vars, argv[1]);
+	// texture_init(vars);
+	parse_map(argv[1], vars);
 	printf("Map parsed\n");
-	texture_init(&vars);
-	vars.textures.north = "../textures/path_to_north_texture.xpm";
-    vars.textures.south = "../textures/path_to_south_texture.xpm";
-    vars.textures.west = "../textures/path_to_west_texture.xpm";
-    vars.textures.east = "../textures/path_to_east_texture.xpm";
-	mlx_loop_hook(vars.mlx, (int (*)(void *))main_loop, &vars);
+	init_player_pos(vars);
+	mlx_loop_hook(vars->mlx, (int (*)(void *))main_loop, &vars);
 	// for (int x = 0; x < WIN_WIDTH; x++) {
     // double camera_x = 2 * x / (double)WIN_WIDTH - 1;
     // vars.ray.ray_dir_x = vars.dir_x + vars.plane_x * camera_x;
     // vars.ray.ray_dir_y = vars.dir_y + vars.plane_y * camera_x;
     // printf("Ray %d: dir_x: %f, dir_y: %f\n", x, vars.ray.ray_dir_x, vars.ray.ray_dir_y);
 	// }
-	mlx_hook(vars.win, 2, 1L<<0, handle_input, &vars);
-	mlx_loop(vars.mlx);
+	mlx_hook(vars->win, 2, 1L<<0, handle_input, &vars);
+	mlx_loop(vars->mlx);
 	return (0);
 }

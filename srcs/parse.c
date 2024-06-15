@@ -58,21 +58,22 @@ void	get_dimensions(t_vars *vars, char *map_path)//check it is not true
 	if (!line)
 	{
 		fprintf(stderr, "Error: Empty file\n");
+		close(fd);
 		exit(EXIT_FAILURE);
 	}
 	while (line)
 	{
-		col = 0;
-		while (line[col] != '\0')
-			col++;
+		col = ft_strlen(line);
 		if (col > vars->map_width)
 			vars->map_width = col;
 		row++;
 		free(line);
 		line = get_next_line(fd);
 	}
+	vars->map_width += 1;
 	vars->map_height = row;
 	close(fd);
+
 }
 
 static void parse_color(char *line, t_color *color)
@@ -97,8 +98,11 @@ static void parse_color(char *line, t_color *color)
 
 static void parse_texture(char *line, char **texture_path)
 {
-	while (*line == ' ')
-		line++;
+	char *newline_pos;
+	
+	newline_pos = strchr(line, '\n');
+    if (newline_pos)
+		*newline_pos = '\0';
 	*texture_path = strdup(line); //ft_strdup(line);
 	if (*texture_path == NULL)
 	{
@@ -107,12 +111,26 @@ static void parse_texture(char *line, char **texture_path)
 	}
 }
 
-static void	ft_strcpy(char *dst, const char *src)
-{
-	while (*src)
-		*dst++ = *src++;
-	*dst = '\0';
-}
+// static void	ft_strcpy(char *dst, const char *src)
+// {
+// 	while (*src)
+// 		*dst++ = *src++;
+// 	*dst = '\0';
+// }
+
+// static char	*fill_the_line_with_A(char *line, t_vars *vars)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	while (i < vars->map_width)
+// 	{
+// 		line[i] = 'A';
+// 		i++;
+// 	}
+// 	line[i] = '\0';
+// 	return (line);
+// }
 
 void parse_map(char *file_path, t_vars *vars)
 {
@@ -126,52 +144,52 @@ void parse_map(char *file_path, t_vars *vars)
 		perror("Error opening file");
 		exit(EXIT_FAILURE);
 	}
-	y = 0;
 	line = get_next_line(fd);
 	if (!line)
 	{
 		fprintf(stderr, "Error: Empty file\n");
+		close(fd);
 		exit(EXIT_FAILURE);
 	}
+	y = 0;
 	while (line)
 	{
 		if (strncmp(line, "NO ", 3) == 0)
-			parse_texture(line + 3, &vars->textures.north);
+			parse_texture(line + 3, &vars->texture.north);
 		else if (strncmp(line, "SO ", 3) == 0)
-			parse_texture(line + 3, &vars->textures.south);
+			parse_texture(line + 3, &vars->texture.south);
 		else if (strncmp(line, "WE ", 3) == 0)
-			parse_texture(line + 3, &vars->textures.west);
+			parse_texture(line + 3, &vars->texture.west);
 		else if (strncmp(line, "EA ", 3) == 0)
-			parse_texture(line + 3, &vars->textures.east);
+			parse_texture(line + 3, &vars->texture.east);
 		else if (strncmp(line, "F ", 2) == 0)
 			parse_color(line + 2, &vars->floor);
 		else if (strncmp(line, "C ", 2) == 0)
 			parse_color(line + 2, &vars->ceiling);
 		else if (line[0] == '\n' || line[0] == '\0')
 		{
+			free(line);
 			line = get_next_line(fd);
 			continue;
 		}
         else
 		{
-            if (y >= MAP_HEIGHT)
+            if (y >= vars->map_height)
 			{
-                fprintf(stderr, "Error: Map exceeds defined height\n");
+                fprintf(stderr, "Error: Map exceeds defined height\n");//change to printf
                 exit(EXIT_FAILURE);
             }
-            if (strlen(line) > MAP_WIDTH)
+            if (ft_strlen(line) > vars->map_width)
 			{
-                fprintf(stderr, "Error: Map width exceeds defined width\n");
+                fprintf(stderr, "Error: Map width exceeds defined width\n"); //change to printf
                 exit(EXIT_FAILURE);
             }
-            ft_strcpy(vars->map[y], line);
+            strncpy(vars->map[y], line, vars->map_width);
+			vars->map[y][vars->map_width] = '\0';
             y++;
         }
         free(line);
 		line = get_next_line(fd);
     }
-	vars->map[y] = NULL;
 	close(fd);
 }
-
-

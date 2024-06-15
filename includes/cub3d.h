@@ -16,8 +16,8 @@
 #define MOVE_SPEED 0.1
 #define ROTATE_SPEED 0.05
 
-#define MAP_WIDTH 42
-#define MAP_HEIGHT 42
+#define MAP_WIDTH 80
+#define MAP_HEIGHT 80
 
 typedef struct	s_player
 {
@@ -53,6 +53,8 @@ typedef struct	s_image
 {
 	void	*image;
 	char	*addr;
+	int		width;
+	int		height;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -109,7 +111,7 @@ typedef struct	s_vars
 	t_image 	image;
 	t_player	player;
 	t_color		ceiling;
-	t_texture	textures;
+	t_texture	texture;
 }				t_vars;
 
 // Function prototypes
@@ -120,7 +122,7 @@ void	move_player(t_vars *vars, float move_x, float move_y);
 void	render_scene(t_vars *vars);
 int     main_loop(t_vars *vars);
 void	get_dimensions(t_vars *vars, char *map_path);
-void	textre_calculation(t_vars *vars, int x);
+void	texture_calculation(t_vars *vars, int x);
 void	texture_init(t_vars *vars);
 void	my_mlx_pixel_put_int(t_image *image, int x, int y, int color);
 

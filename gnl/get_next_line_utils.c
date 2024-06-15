@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliberk <aliberk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 11:55:24 by apancar           #+#    #+#             */
-/*   Updated: 2024/06/07 12:20:18 by apancar          ###   ########.fr       */
+/*   Updated: 2024/06/15 06:41:43 by aliberk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ char	*ft_strjoin(char *temp, char *buff)
 	return (free(temp), str);
 }
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i] != '\0')

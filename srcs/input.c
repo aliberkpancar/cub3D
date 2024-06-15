@@ -5,8 +5,11 @@ void	move_player(t_vars *vars, float move_x, float move_y)
 	int	new_x;
 	int	new_y;
 
+	printf("vars->pos_x:%f vars->pos_y:%f\n", vars->pos_x, vars->pos_y);
+	printf("move_x:%f move_y:%f\n", move_x, move_y);
     new_x = (int)(vars->pos_x + move_x);
     new_y = (int)(vars->pos_y + move_y);
+	printf("new_x:%d new_y:%d\n", new_x, new_y);
     if (vars->map[new_y][new_x] != '1')
     {
         vars->pos_x += move_x;
@@ -35,7 +38,8 @@ int	handle_input(int keycode, t_vars *vars)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit(0);
-	}	
+	}
+	printf("vars->dir_x:%f vars->dir_y:%f\n", vars->player.dir_x, vars->player.dir_y);
 	if (keycode == 13)// W key
 		move_player(vars, vars->player.dir_x * MOVE_SPEED, vars->player.dir_y * MOVE_SPEED);
 	if (keycode == 1)// S key

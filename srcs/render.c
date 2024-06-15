@@ -122,7 +122,7 @@ void render_scene(t_vars *vars)
         {
             color = 0x00FF00;
         }
-		textre_calculation(vars, x);
+		// texture_calculation(vars, x);
         draw_vertical_line(vars, x, vars->ray.draw_start, vars->ray.draw_end, color);
     }
     mlx_put_image_to_window(vars->mlx, vars->win, vars->image.image, 0, 0);
