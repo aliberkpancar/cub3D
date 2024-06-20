@@ -2,7 +2,6 @@
 #define CUB3D_H
 
 #include "../mlx/mlx.h"
-#include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include <fcntl.h>
@@ -15,9 +14,6 @@
 
 #define MOVE_SPEED 0.1
 #define ROTATE_SPEED 0.05
-
-#define MAP_WIDTH 80
-#define MAP_HEIGHT 80
 
 typedef struct	s_player
 {
@@ -103,9 +99,13 @@ typedef struct	s_vars
 	double		pos_y;
     double  	plane_x;
 	double		plane_y;
-	int			map_width;
-	int			map_height;
-	char		**map;
+	int			temp_width;
+	int			temp_height;
+	int			width;
+	int			height;
+	int			player_count;
+	char		**temp_map;
+	char 		**r_map;
 	t_ray		ray;
 	t_color		floor;
 	t_image 	image;
@@ -125,5 +125,9 @@ void	get_dimensions(t_vars *vars, char *map_path);
 void	texture_calculation(t_vars *vars, int x);
 void	texture_init(t_vars *vars);
 void	my_mlx_pixel_put_int(t_image *image, int x, int y, int color);
+void	create_r_map(t_vars *vars);
+void	my_mlx_pixel_put(t_image *image, int x, int y, t_color color);
+void	check_r_map(t_vars *vars);
+
 
 #endif

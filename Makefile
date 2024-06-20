@@ -1,7 +1,7 @@
 NAME = cub3D
 
-SOURCES = srcs/main.c srcs/parse.c srcs/render.c srcs/input.c gnl/get_next_line.c \
-	gnl/get_next_line_utils.c srcs/texture.c
+SOURCES = srcs/main.c srcs/parse.c srcs/render.c srcs/rendere.c srcs/input.c gnl/get_next_line.c \
+	gnl/get_next_line_utils.c srcs/texture.c srcs/parsel.c srcs/check_map.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
