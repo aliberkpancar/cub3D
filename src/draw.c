@@ -11,7 +11,7 @@ void	draw_background(t_vars *vars)
 		j = 0;
 		while (j < HEIGHT)
 		{
-			if (j <= HEIGHT / 2) // Corrected condition
+			if (j <= HEIGHT / 2)
 				ft_put_pixel(&vars->mlx.image, i, j, vars->ceiling);
 			else
 				ft_put_pixel(&vars->mlx.image, i, j, vars->floor);
