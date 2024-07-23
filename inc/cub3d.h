@@ -9,8 +9,8 @@
 # include "get_next_line_bonus.h"
 # include "libft.h"
 
-# define HEIGHT			600 // what should be?
-# define WIDTH			800 // what should be?
+# define HEIGHT			1024
+# define WIDTH			1280
 # define TILE_SIZE		40
 # define PLAYER_RAD		6
 # define PLAYER_SIZE	0.2
@@ -117,7 +117,6 @@ typedef struct s_vars
 	char 		**r_map;
 	char		**t_map;
 	t_mlx		mlx;
-	t_mlx		debug;
 	t_tile_map	map;
 	t_player	player;
 	t_input		inputs;
@@ -144,16 +143,6 @@ struct s_draw_hlpr
 	int		index;
 };
 
-//---------------------- Debug --------------------------
-
-void	init_debug(t_vars *vars);
-void	draw_tile(t_image *debug, char tile, int x, int y);
-void	draw_map(t_vars *vars);
-void	draw_rays(t_vars *vars);
-void	draw_player(t_vars *vars);
-void	debug_point(t_image *image, t_vec2 point);
-void	update_debug(t_vars *vars);
-
 //---------------------- Raycast --------------------------
 
 void	raycast(t_vars *vars, t_vec2 start, t_vec2 dir, t_hit *out);
@@ -174,7 +163,7 @@ t_color	*get_tex_data(t_image *tex, float tex_x);
 
 //---------------------- Update --------------------------
 
-int		update(void *param);
+int		game(void *param);
 
 //----------------- Bresenham Line Algorithm -----------------------
 

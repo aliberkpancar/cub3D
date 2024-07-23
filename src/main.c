@@ -26,13 +26,12 @@ static int	close_window(t_vars *vars)
 int	main(int argc, char **argv)
 {
 	//flood fill
-	//headers will change
+	// headers will change
 	// multiple map
 	// Makefile wildcard
 	// if (ray_len == 0) draw.c:96
 	// check ability of lock xpms?
 	// when change texture segfault
-	//if (ray_len == 0) //ask bg
 	t_vars	vars;
 
 	if (argc != 2)
@@ -47,9 +46,7 @@ int	main(int argc, char **argv)
 	mlx_hook(vars.mlx.win.win,
 		Destroy, (1 << 17), key_release_handler, &vars);
 	mlx_hook(vars.mlx.win.win, 17, 0, close_window, &vars);
-	mlx_loop_hook(vars.mlx.mlx, update, &vars);
+	mlx_loop_hook(vars.mlx.mlx, game, &vars);
 	mlx_loop(vars.mlx.mlx);
 	return (0);
 }
-	
-	

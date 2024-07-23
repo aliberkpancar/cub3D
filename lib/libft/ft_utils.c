@@ -6,15 +6,15 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 16:50:51 by buozcan           #+#    #+#             */
-/*   Updated: 2024/07/20 06:51:29 by apancar          ###   ########.fr       */
+/*   Updated: 2024/07/23 06:49:24 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-float	ft_deg_to_rad(float deg)
+float	degree_to_radian(float degree)
 {
-	return ((deg / 180) * PI);
+	return ((degree / 180) * PI);
 }
 
 float	ft_rad_to_deg(float rad)

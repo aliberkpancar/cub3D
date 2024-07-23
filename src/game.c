@@ -38,15 +38,12 @@ void	update_player(t_vars *vars)
 	move_dir = ft_vec2_rotate(move_dir,
 			ft_rad_to_deg(-atan2(vars->player.dir.x, vars->player.dir.y)));
 	move_dir = ft_vec2_inv(move_dir); //why we invert negative these directories?
-	// ft_draw_line(&vars->debug, ft_vec2_mul(vars->player.pos, TILE_SIZE),
-	// 	ft_vec2_mul(ft_vec2_add(vars->player.pos, move_dir), TILE_SIZE),
-	// 	g_magenta);
 	rotate_dir = inputs.left_key + inputs.right_key;
 	player_camera(vars, rotate_dir);
 	player_movement(vars, move_dir);
 }
 
-int	update(void *param)
+int	game(void *param)
 {
 	static double	last_time = 0;
 	double			curr_time;
@@ -59,9 +56,6 @@ int	update(void *param)
 	last_time = curr_time;
 	update_player(vars);
 	update_rays(vars);
-	#if DEBUG == 1
-	update_debug(vars);
-	#endif
 	draw_background(vars);
 	draw_walls(vars);
 	mlx_put_image_to_window(vars->mlx.mlx, vars->mlx.win.win,

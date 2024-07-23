@@ -29,7 +29,7 @@ static void	draw_face(struct s_draw_hlpr drw)
 	t_color	*data;
 
 	// drw.line_height = HEIGHT;
-	// full_height = HEIGHT; //???
+	full_height = HEIGHT;
 	data = get_tex_data(drw.tex, drw.tex_x);
 	if (!data)
 	{
@@ -41,8 +41,10 @@ static void	draw_face(struct s_draw_hlpr drw)
 	while (i < drw.line_height)
 	{
 		if (full_height > HEIGHT)
+		{
 			tex_y = get_tex_y(drw.tex, i + ((full_height - HEIGHT) / 2),
 					full_height);
+		}
 		else
 			tex_y = get_tex_y(drw.tex, i,
 					drw.line_height);
@@ -61,7 +63,6 @@ static void	draw_wall_piece(t_vars *vars, float line_height,
 	float	pos_x;
 	float	pos_y;
 
-	// line_height = HEIGHT / line_height;
 	pos_x = vars->collisions[index].pos.x;
 	pos_y = vars->collisions[index].pos.y;
 	if (face == south)
@@ -81,6 +82,12 @@ static void	draw_wall_piece(t_vars *vars, float line_height,
 			.line_height = line_height, .index = index,
 			.tex_x = pos_y - (int)pos_y});
 }
+static t_bool	ft_vec2_equ(t_vec2 vec1, t_vec2 vec2)
+{
+	if (((fabs(vec1.x) - fabs(vec2.x)) < EPSILON) && (fabs(vec1.y) - fabs(vec2.y) < EPSILON))
+		return (true);
+	return (false);
+}
 
 void	draw_walls(t_vars *vars)
 {
@@ -91,18 +98,15 @@ void	draw_walls(t_vars *vars)
 	i = 0;
 	while (i < vars->coll_count)
 	{
-		ray_len = ft_vec2_dist(vars->collisions[i].pos, vars->player.pos);
-		if (ray_len == 0) //ask bg
+		if (ft_vec2_equ(vars->collisions[i].pos, g_vec2_null))
 		{
-			printf("Error\nRay_len is zero\n");
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			line_height = HEIGHT
-				/ (ray_len * cos(ft_deg_to_rad(vars->coll_degree[i])));
-			draw_wall_piece(vars, line_height, i, vars->collisions[i].face);
 			i++;
+			continue ;
 		}
+		ray_len = ft_vec2_dist(vars->collisions[i].pos, vars->player.pos);
+		line_height = HEIGHT
+			/ (ray_len * cos(degree_to_radian(vars->coll_degree[i])));
+		draw_wall_piece(vars, line_height, i, vars->collisions[i].face);
+		i++;
 	}
 }

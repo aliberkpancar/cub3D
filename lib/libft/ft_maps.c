@@ -7,6 +7,7 @@ float	ft_normalize(float val, float min, float max)
 	return ((val - min) / (max - min));
 }
 
+
 float	ft_lerp(float val, float min, float max)
 {
 	return ((val * (max - min)) + min);

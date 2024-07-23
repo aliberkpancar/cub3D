@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-static void	hit_vertical_hlpr(t_raycast *ray, t_vec2 start, t_vec2 dir)
+static void	init_vertical_ray(t_raycast *ray, t_vec2 start, t_vec2 dir)
 {
 	if (dir.x < 0)
 	{
@@ -20,7 +20,7 @@ static t_vec2	hit_vertical(t_vars *vars, t_vec2 start, t_vec2 dir, float *dist)
 {
 	t_raycast	ray;
 
-	hit_vertical_hlpr(&ray, start, dir);
+	init_vertical_ray(&ray, start, dir);
 	while (ray.x >= 0 && ray.x < vars->map.size.x)
 	{
 		ray.y = ((dir.y / dir.x) * (ray.x - start.x)) + start.y;
@@ -37,7 +37,7 @@ static t_vec2	hit_vertical(t_vars *vars, t_vec2 start, t_vec2 dir, float *dist)
 	return (start);
 }
 
-static void	hit_horizontal_hlpr(t_raycast *ray, t_vec2 start, t_vec2 dir)
+static void	init_horizontal_ray(t_raycast *ray, t_vec2 start, t_vec2 dir)
 {
 	if (dir.y < 0)
 	{
@@ -57,7 +57,7 @@ static t_vec2	hit_horizontal(t_vars *cub3d, t_vec2 start, t_vec2 dir, float *dis
 {
 	t_raycast	ray;
 
-	hit_horizontal_hlpr(&ray, start, dir);
+	init_horizontal_ray(&ray, start, dir);
 	while (ray.y > 0 && ray.y < cub3d->map.size.y)
 	{
 		ray.x = ((dir.x / dir.y) * (ray.y - start.y)) + start.x;

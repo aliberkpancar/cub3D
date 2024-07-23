@@ -9,10 +9,8 @@
 # include "ftcolors.h"
 # include "ftinputs.h"
 
-# ifdef USE_MATH
 #  define PI		3.14159265358979323846
-#  define EPSILON	1e-3;
-# endif
+#  define EPSILON	1e-3
 
 static const t_vec2	g_vec2_null = (t_vec2){.x = 0, .y = 0};
 static const t_vec2	g_vec2_i = (t_vec2){.x = 1, .y = 0};
@@ -291,7 +289,7 @@ void		ft_free_str_arr(char **str_arr);
 It works both of uppercase and lowercase versions.*/
 int			ft_atoi_hex(const char *str);
 //Degree to Radian conversions.
-float		ft_deg_to_rad(float deg);
+float		degree_to_radian(float deg);
 //Radian to Degree conversions.
 float		ft_rad_to_deg(float rad);
 

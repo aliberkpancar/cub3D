@@ -8,10 +8,9 @@ OBJ = obj
 
 SRCS = 	$(SRC)/check_map.c \
 		$(SRC)/controller.c \
-		$(SRC)/debug.c \
 		$(SRC)/draw.c \
 		$(SRC)/error.c \
-		$(SRC)/ft_bresenham_line.c \
+		$(SRC)/game.c \
 		$(SRC)/init.c \
 		$(SRC)/main.c \
 		$(SRC)/map.c \
@@ -20,7 +19,6 @@ SRCS = 	$(SRC)/check_map.c \
 		$(SRC)/player.c \
 		$(SRC)/raycast.c \
 		$(SRC)/texture.c \
-		$(SRC)/update.c \
 		$(SRC)/utils.c
 
 MLX = lib/mlx/libmlx.a
@@ -32,7 +30,7 @@ GNL = lib/get_next_line/get_next_line.a
 INCLUDES = -I./lib/mlx -I./lib/get_next_line \
 	-I./lib/libft -I./inc
 
-CFLAGS = -O3 -Wall -Wextra -Werror $(DEBUG)
+CFLAGS = -O3 -Wall -Wextra -Werror -g
 
 MLX_FLAGS_LINUX = $(GNL) $(LIBFT) $(MLX) -Bdynamic -L/usr/lib/X11 \
 	-lXext -lX11 -lm
@@ -100,9 +98,6 @@ clean:
 	fi
 	@echo "All unnecessery files cleared."
 re: fclean all
-
-debug:
-	@make all DEBUG="-g -fsanitize=address -D DEBUG=1" > /dev/null 2> /dev/null
 
 run: $(NAME)
 	./$(NAME)
