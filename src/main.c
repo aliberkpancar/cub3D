@@ -26,6 +26,7 @@ static int	close_window(t_vars *vars)
 int	main(int argc, char **argv)
 {
 	//flood fill
+	//delete sanitizer
 	// headers will change
 	// multiple map
 	// Makefile wildcard

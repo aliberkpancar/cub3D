@@ -123,7 +123,6 @@ void	init_game(t_vars *vars, char *map)
 	check_r_map(vars);
 	init_textures(vars);
 	init_win(vars);
-
 	get_map(vars);
 	mlx_put_image_to_window(vars->mlx.mlx, vars->mlx.win.win,
 		vars->mlx.image.image, 0, 0);

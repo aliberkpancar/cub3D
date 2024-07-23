@@ -82,6 +82,7 @@ static void	draw_wall_piece(t_vars *vars, float line_height,
 			.line_height = line_height, .index = index,
 			.tex_x = pos_y - (int)pos_y});
 }
+
 static t_bool	ft_vec2_equ(t_vec2 vec1, t_vec2 vec2)
 {
 	if (((fabs(vec1.x) - fabs(vec2.x)) < EPSILON) && (fabs(vec1.y) - fabs(vec2.y) < EPSILON))
@@ -104,8 +105,11 @@ void	draw_walls(t_vars *vars)
 			continue ;
 		}
 		ray_len = ft_vec2_dist(vars->collisions[i].pos, vars->player.pos);
-		line_height = HEIGHT
-			/ (ray_len * cos(degree_to_radian(vars->coll_degree[i])));
+		if (ray_len == 0)
+		{
+			ray_len = 0.1;
+		}
+		line_height = HEIGHT / (ray_len * cos(degree_to_radian(vars->coll_degree[i])));
 		draw_wall_piece(vars, line_height, i, vars->collisions[i].face);
 		i++;
 	}

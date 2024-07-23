@@ -18,7 +18,7 @@ float	ft_vec2_dist(t_vec2 point1, t_vec2 point2)
 	float	dist_y;
 
 	dist_x = fabs(point1.x - point2.x);
-	dist_y = fabs(point1.y - point2.y);	
+	dist_y = fabs(point1.y - point2.y);
 	return (sqrtf(powf(dist_x, 2) + powf(dist_y, 2)));
 }
 
