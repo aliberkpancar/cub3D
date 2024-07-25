@@ -25,6 +25,7 @@ static int	close_window(t_vars *vars)
 
 int	main(int argc, char **argv)
 {
+	// delete all unnecessary functions from libft
 	//flood fill
 	//delete sanitizer
 	// headers will change

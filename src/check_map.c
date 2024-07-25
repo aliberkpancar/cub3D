@@ -16,13 +16,7 @@ void	check_r_map(t_vars *vars)
 	int	i;
 	int	j;
 
-	vars->player_count = 0;
 	get_player_positions(vars);
-	if (vars->player_count != 1)
-	{
-		printf("Error\nInvalid player count\n");
-		exit(EXIT_FAILURE);
-	}
 	i = 0;
 	while (i < vars->height)
 	{

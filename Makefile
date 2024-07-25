@@ -48,7 +48,7 @@ OBJS = $(SRCS:$(SRC)/%.c=$(OBJ)/%.o)
 all: $(NAME)
 
 $(OBJ)/%.o: $(SRC)/%.c | $(OBJ)
-	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $?
+	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $^
 
 $(OBJ):
 	mkdir -p $(OBJ)

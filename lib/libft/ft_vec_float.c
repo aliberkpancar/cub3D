@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 
-float	ft_vec2_dot(t_vec2 vec1, t_vec2 vec2)
+float	ft_vec_dot(t_vec vec1, t_vec vec2)
 {
 	float	res;
 
@@ -12,7 +12,7 @@ float	ft_vec2_dot(t_vec2 vec1, t_vec2 vec2)
 	return (res);
 }
 
-float	ft_vec2_dist(t_vec2 point1, t_vec2 point2)
+float	ft_vec_distance(t_vec point1, t_vec point2)
 {
 	float	dist_x;
 	float	dist_y;
@@ -22,11 +22,11 @@ float	ft_vec2_dist(t_vec2 point1, t_vec2 point2)
 	return (sqrtf(powf(dist_x, 2) + powf(dist_y, 2)));
 }
 
-float	ft_vec2_mag(t_vec2 vec)
+float	ft_vec_mag(t_vec vec)
 {
-	t_vec2	vec_null;
+	t_vec	vec_null;
 
 	vec_null.x = 0;
 	vec_null.y = 0;
-	return (ft_vec2_dist(vec_null, vec));
+	return (ft_vec_distance(vec_null, vec));
 }

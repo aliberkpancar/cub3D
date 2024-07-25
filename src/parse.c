@@ -36,6 +36,8 @@ static void	parse_t_map(t_vars *vars, char *line, int *x)
 		exit(EXIT_FAILURE);
 	}
 	vars->t_map[*x] = ft_strcpy(vars->t_map[*x], line);
+	while (ft_strlen(vars->t_map[*x]) < vars->temp_width - 1)
+		vars->t_map[*x] = ft_strcat(vars->t_map[*x], " ");
 	vars->t_map[*x][vars->temp_width] = '\0';
 	(*x)++;
 }

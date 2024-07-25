@@ -2,12 +2,41 @@
 
 static void	init_player(t_vars *vars)
 {
-	vars->player.pos.x = 4.5;
-	vars->player.pos.y = 5.5;
-	vars->player.dir.x = 0.0;
-	vars->player.dir.y = 1.0;
-	// vars->player.plane.x = 0.0;
-	// vars->player.plane.y = 0.66;
+	int	i;
+
+	i = 0;
+	while (i < vars->temp_height)
+	{
+		int j = 0;
+		while (j < vars->temp_width)
+		{
+			if (vars->t_map[i][j] == 'N' || vars->t_map[i][j] == 'S' || vars->t_map[i][j] == 'W' || vars->t_map[i][j] == 'E')
+			{
+				if (vars->t_map[i][j] == 'N')
+				{
+					vars->player.dir.x = 0.0;
+					vars->player.dir.y = -1.0;
+				}
+				else if (vars->t_map[i][j] == 'S')
+				{
+					vars->player.dir.x = 0.0;
+					vars->player.dir.y = 1.0;
+				}
+				else if (vars->t_map[i][j] == 'W')
+				{
+					vars->player.dir.x = -1.0;
+					vars->player.dir.y = 0.0;
+				}
+				else if (vars->t_map[i][j] == 'E')
+				{
+					vars->player.dir.x = 1.0;
+					vars->player.dir.y = 0.0;
+				}
+			}
+			j++;
+		}
+		i++;
+	}
 	vars->player.move_speed = 10;
 	vars->player.camera_speed = 100;
 }
@@ -61,6 +90,15 @@ static void	init_vars(t_vars *vars, char *map)
 {
 	int i;
 
+	vars->inputs = (t_input){0};
+	vars->mlx.mlx = mlx_init();
+	vars->ceiling = (t_color){0};
+	vars->floor = (t_color){0};
+	vars->player.pos.x = 4.5;
+	vars->player.pos.y = 5.5;
+	vars->player.dir.x = 0.0;
+	vars->player.dir.y = 1.0;
+	vars->player_count = 0;
 	get_dimensions(vars, map);
 	vars->t_map = (char **)malloc(vars->temp_height * sizeof(char *)); 
 	if (!vars->t_map)
@@ -71,7 +109,7 @@ static void	init_vars(t_vars *vars, char *map)
 	i = 0;
 	while (i < vars->temp_height)
 	{
-		vars->t_map[i] = (char *)malloc(vars->temp_width + 1 * sizeof(char)); 
+		vars->t_map[i] = (char *)malloc((vars->temp_width + 1) * sizeof(char)); 
 		if (!vars->t_map[i])
 		{
 			printf("Error\n"); // free everything
@@ -111,15 +149,11 @@ static void	get_map(t_vars *vars)
 }
 
 void	init_game(t_vars *vars, char *map)
-{
-	vars->inputs = (t_input){0};
-	vars->mlx.mlx = mlx_init();
-	vars->ceiling = (t_color){0};
-	vars->floor = (t_color){0};
+{	
 	init_vars(vars, map);
 	parse_map(vars, map);
-	create_r_map(vars);
 	init_player(vars);
+	create_r_map(vars);
 	check_r_map(vars);
 	init_textures(vars);
 	init_win(vars);

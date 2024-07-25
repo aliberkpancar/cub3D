@@ -1,21 +1,21 @@
 #include "libft.h"
 
-float	ft_normalize(float val, float min, float max)
+float	ft_normalize(float value, float min, float max)
 {
 	if (max == min)
 		return (1);
-	return ((val - min) / (max - min));
+	return ((value - min) / (max - min));
 }
 
 
-float	ft_lerp(float val, float min, float max)
+float	linear_interpolation(float value, float min, float max)
 {
-	return ((val * (max - min)) + min);
+	return ((value * (max - min)) + min);
 }
 
-float	ft_map(float val, t_map map)
+float	ft_map(float value, t_map map)
 {
-	return (ft_lerp(ft_normalize(val, map.min_i, map.min_o),
+	return (linear_interpolation(ft_normalize(value, map.min_i, map.min_o),
 			map.min_o, map.max_o));
 }
 
