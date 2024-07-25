@@ -25,15 +25,8 @@ static int	close_window(t_vars *vars)
 
 int	main(int argc, char **argv)
 {
-	// delete all unnecessary functions from libft
-	//flood fill
 	//delete sanitizer
-	// headers will change
-	// multiple map
-	// Makefile wildcard
-	// if (ray_len == 0) draw.c:96
 	// check ability of lock xpms?
-	// when change texture segfault
 	t_vars	vars;
 
 	if (argc != 2)

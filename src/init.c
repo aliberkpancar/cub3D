@@ -86,20 +86,10 @@ void	init_textures(t_vars *vars)
 	mirror_tex(&vars->tex_east);
 }
 
-static void	init_vars(t_vars *vars, char *map)
+static void	allocate_t_map(t_vars *vars)
 {
 	int i;
 
-	vars->inputs = (t_input){0};
-	vars->mlx.mlx = mlx_init();
-	vars->ceiling = (t_color){0};
-	vars->floor = (t_color){0};
-	vars->player.pos.x = 4.5;
-	vars->player.pos.y = 5.5;
-	vars->player.dir.x = 0.0;
-	vars->player.dir.y = 1.0;
-	vars->player_count = 0;
-	get_dimensions(vars, map);
 	vars->t_map = (char **)malloc(vars->temp_height * sizeof(char *)); 
 	if (!vars->t_map)
 	{
@@ -117,6 +107,21 @@ static void	init_vars(t_vars *vars, char *map)
 		}
 		i++;
 	}
+}
+
+static void	init_variables(t_vars *vars, char *map)
+{
+	vars->inputs = (t_input){0};
+	vars->mlx.mlx = mlx_init();
+	vars->ceiling = (t_color){0};
+	vars->floor = (t_color){0};
+	vars->player.pos.x = 4.5;
+	vars->player.pos.y = 5.5;
+	vars->player.dir.x = 0.0;
+	vars->player.dir.y = 1.0;
+	vars->player_count = 0;
+	get_dimensions(vars, map);
+	allocate_t_map(vars);
 }
 
 static void	get_map(t_vars *vars)
@@ -150,7 +155,7 @@ static void	get_map(t_vars *vars)
 
 void	init_game(t_vars *vars, char *map)
 {	
-	init_vars(vars, map);
+	init_variables(vars, map);
 	parse_map(vars, map);
 	init_player(vars);
 	create_r_map(vars);
