@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 	// check ability of lock xpms?
 	t_vars	vars;
 
+	//todo(abostano): free t_map and r_map at all exits.
 	if (argc != 2)
 		return (printf("Error\nInvalid argument\n"), 1);
 	if (is_cub_extension(argv[1]) == false)

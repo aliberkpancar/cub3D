@@ -6,12 +6,12 @@ static void	update_rays(t_vars *vars)
 	float	degree;
 
 	vars->collission_count = WIDTH;
-	vars->collisions = ft_calloc(vars->collission_count, sizeof (t_hit));
-	if (!vars->collisions)
-		exit(EXIT_FAILURE);
-	vars->collision_degree = ft_calloc(vars->collission_count, sizeof (float));
-	if (vars->collision_degree == NULL)
-		exit(EXIT_FAILURE);
+	// vars->collisions = ft_calloc(vars->collission_count, sizeof (t_hit));
+	// if (!vars->collisions)
+	// 	exit(EXIT_FAILURE);
+	// vars->collision_degree = ft_calloc(vars->collission_count, sizeof (float));
+	// if (vars->collision_degree == NULL)
+	// 	exit(EXIT_FAILURE);
 	degree = -(WIDTH / 2);
 	i = 0;
 	while (i < WIDTH)
@@ -50,6 +50,7 @@ int	game(void *param)
 	char			*frame_rate;
 	t_vars			*vars;
 
+	//todo(abostano): we can add some bonus.
 	vars = (t_vars *)param;
 	curr_time = clock();
 	vars->delta_time = (double)(curr_time - last_time) / CLOCKS_PER_SEC;
@@ -64,7 +65,5 @@ int	game(void *param)
 	mlx_string_put(vars->mlx.mlx, vars->mlx.win.win, HEIGHT, WIDTH, g_magenta.value,
 		frame_rate);
 	free(frame_rate);
-	free(vars->collisions);
-	free(vars->collision_degree);
 	return (0);
 }

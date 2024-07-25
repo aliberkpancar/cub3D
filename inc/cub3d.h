@@ -110,7 +110,7 @@ typedef struct s_vars
 	int			width;
 	int			height;
 	int			player_count;
-	float		*collision_degree;
+	float		collision_degree[WIDTH];
 	double		delta_time;
 	int			collission_count;
 	char 		**r_map;
@@ -123,7 +123,7 @@ typedef struct s_vars
 	t_image		tex_west;
 	t_image		tex_south;
 	t_image		tex_east;
-	t_hit		*collisions;
+	t_hit		collisions[WIDTH];
 	t_logger	log;
 	t_texture	texture;
 	t_color		ceiling;
