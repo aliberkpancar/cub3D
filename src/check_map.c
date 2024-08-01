@@ -15,22 +15,11 @@ void	check_r_map(t_vars *vars)
 {
 	int i;
 	int j;
-	int empty_line_found;
 
 	get_player_positions(vars);
 	i = 0;
-	empty_line_found = 0;
 	while (i < vars->height)
 	{
-		if (vars->r_map[i][0] == '\0' || vars->r_map[i][0] == '\n')
-		{
-			empty_line_found = 1;
-		}
-		else if (empty_line_found)
-		{
-			printf("Error\nMultiple maps in the file\n");
-			exit(EXIT_FAILURE);
-		}
 		j = 0;
 		while (j < vars->width)
 		{

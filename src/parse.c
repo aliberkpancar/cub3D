@@ -42,8 +42,10 @@ static void	parse_t_map(t_vars *vars, char *line, int *x)
 	(*x)++;
 }
 
-static void	parse_line(t_vars *vars, char *line, int *x)
+static void	parse_line(t_vars *vars, char *line, int *x, int *empty_line)
 {
+	if (line[0] == '\0' || line[0] == '\n')
+		(*empty_line)++;
 	if (ft_strncmp(line, "NO ", 3) == 0)
 		parse_texture(line + 3, &vars->texture.north);
 	else if (ft_strncmp(line, "SO ", 3) == 0)
@@ -65,7 +67,9 @@ void	parse_map(t_vars *vars, char *file_path)
 	int		x;
 	int		fd;
 	char	*line;
+	int		empty_line;
 
+	empty_line = 0;
 	fd = open(file_path, O_RDONLY);
 	check_fd_error(fd);
 	line = get_next_line(fd);
@@ -73,7 +77,12 @@ void	parse_map(t_vars *vars, char *file_path)
 	x = 0;
 	while (line)
 	{
-		parse_line(vars, line, &x);
+		parse_line(vars, line, &x, &empty_line);
+		if (empty_line >= 3)
+		{
+			printf("Error\nMultiple maps in the file\n");
+			exit(EXIT_FAILURE);
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
