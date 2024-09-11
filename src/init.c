@@ -129,6 +129,7 @@ static void	get_map(t_vars *vars)
 	int i;
 	int j;
 
+	i = 0;
 	vars->map.size.x = vars->width;
 	vars->map.size.y = vars->height;
 	vars->map.tiles = malloc(sizeof (char)

@@ -19,7 +19,8 @@ SRCS = 	$(SRC)/check_map.c \
 		$(SRC)/player.c \
 		$(SRC)/raycast.c \
 		$(SRC)/texture.c \
-		$(SRC)/utils.c
+		$(SRC)/utils.c \
+		$(SRC)/minimap.c
 
 MLX = lib/mlx/libmlx.a
 

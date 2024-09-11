@@ -13,6 +13,9 @@
 # define WIDTH			1280
 # define PLAYER_RAD		6
 # define PLAYER_SIZE	0.2
+# define MINIMAP_SCALE 0.2
+# define MINIMAP_WIDTH 200
+# define MINIMAP_HEIGHT 200
 
 typedef union u_vec2i
 {
@@ -167,6 +170,7 @@ void	check_fd_error(int fd);
 void	check_line_error(char *line, int fd);
 t_bool	has_0_or_1(char *line);
 t_bool	has_F_and_C(char *line);
+void	draw_minimap(t_vars *vars);
 char	*ft_strcpy(char *dst, const char *src);
 
 #endif

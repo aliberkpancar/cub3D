@@ -50,7 +50,6 @@ int	game(void *param)
 	char			*frame_rate;
 	t_vars			*vars;
 
-	//todo(abostano): we can add some bonus.
 	vars = (t_vars *)param;
 	curr_time = clock();
 	vars->delta_time = (double)(curr_time - last_time) / CLOCKS_PER_SEC;
@@ -64,6 +63,7 @@ int	game(void *param)
 	frame_rate = ft_itoa((int)(1 / vars->delta_time));
 	mlx_string_put(vars->mlx.mlx, vars->mlx.win.win, HEIGHT, WIDTH, g_magenta.value,
 		frame_rate);
+	draw_minimap(vars);
 	free(frame_rate);
 	return (0);
 }
