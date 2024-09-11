@@ -28,7 +28,6 @@ static void	draw_face(struct s_draw_hlpr drw)
 	float	full_height;
 	t_color	*data;
 
-	// drw.line_height = HEIGHT;
 	full_height = HEIGHT;
 	data = get_tex_data(drw.tex, drw.tex_x);
 	if (!data)
@@ -82,9 +81,10 @@ static void	draw_wall_piece(t_vars *vars, float line_height,
 			.line_height = line_height, .index = index,
 			.tex_x = pos_y - (int)pos_y});
 }
-static t_bool	ft_vec2_equ(t_vec2 vec1, t_vec2 vec2)
+
+static t_bool	ft_vec_equal(t_vec vec1, t_vec vec2)
 {
-	if (((fabs(vec1.x) - fabs(vec2.x)) < EPSILON) && (fabs(vec1.y) - fabs(vec2.y) < EPSILON))
+	if (((fabs(vec1.x) - fabs(vec2.x)) < 0.001) && (fabs(vec1.y) - fabs(vec2.y) < 0.001))
 		return (true);
 	return (false);
 }
@@ -96,16 +96,17 @@ void	draw_walls(t_vars *vars)
 	int		i;
 
 	i = 0;
-	while (i < vars->coll_count)
+	while (i < vars->collission_count)
 	{
-		if (ft_vec2_equ(vars->collisions[i].pos, g_vec2_null))
+		if (ft_vec_equal(vars->collisions[i].pos, g_vec2_null))
 		{
 			i++;
 			continue ;
 		}
-		ray_len = ft_vec2_dist(vars->collisions[i].pos, vars->player.pos);
-		line_height = HEIGHT
-			/ (ray_len * cos(degree_to_radian(vars->coll_degree[i])));
+		ray_len = ft_vec_distance(vars->collisions[i].pos, vars->player.pos);
+		if (ray_len == 0)
+			continue ;
+		line_height = HEIGHT / (ray_len * cos(degree_to_radian(vars->collision_degree[i])));
 		draw_wall_piece(vars, line_height, i, vars->collisions[i].face);
 		i++;
 	}

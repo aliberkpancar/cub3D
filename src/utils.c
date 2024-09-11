@@ -50,3 +50,23 @@ char	*ft_strcpy(char *dst, const char *src)
 	dst[i] = '\0';
 	return (dst);
 }
+
+void	free_r_t_map(t_vars *head)
+{
+	int	i;
+
+	i = 0;
+	while (head->t_map[i] != NULL)
+	{
+		free(head->t_map[i]);
+		i++;
+	}
+	free(head->t_map);
+	i = 0;
+	while (head->r_map[i] != NULL)
+	{
+		free(head->r_map[i]);
+		i++;
+	}
+	free(head->r_map);
+}

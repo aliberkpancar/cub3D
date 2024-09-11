@@ -27,16 +27,13 @@ LIBFT = lib/libft/libft.a
 
 GNL = lib/get_next_line/get_next_line.a
 
-INCLUDES = -I./lib/mlx -I./lib/get_next_line \
-	-I./lib/libft -I./inc
+INCLUDES = -I./lib/mlx -I./lib/get_next_line -I./lib/libft -I./inc
 
-CFLAGS = -O3 -Wall -Wextra -Werror -g
+CFLAGS = -O3 -Wall -Wextra -Werror -g -fsanitize=address
 
-MLX_FLAGS_LINUX = $(GNL) $(LIBFT) $(MLX) -Bdynamic -L/usr/lib/X11 \
-	-lXext -lX11 -lm
+MLX_FLAGS_LINUX = $(GNL) $(LIBFT) $(MLX) -Bdynamic -L/usr/lib/X11 -lXext -lX11 -lm
 
-MLX_FLAGS_MAC = $(GNL) $(LIBFT) $(MLX) -Bdynamic -framework OpenGL \
-	-framework AppKit
+MLX_FLAGS_MAC = $(GNL) $(LIBFT) $(MLX) -Bdynamic -framework OpenGL -framework AppKit
 
 UNAME = $(shell uname)
 
@@ -51,7 +48,7 @@ OBJS = $(SRCS:$(SRC)/%.c=$(OBJ)/%.o)
 all: $(NAME)
 
 $(OBJ)/%.o: $(SRC)/%.c | $(OBJ)
-	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $?
+	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $^
 
 $(OBJ):
 	mkdir -p $(OBJ)
@@ -93,8 +90,7 @@ clean:
 	@rm -f $(OBJ)/*.o
 	@make -C lib/libft fclean > /dev/null
 	@make -C lib/get_next_line fclean > /dev/null
-	@if [ -d "./lib/mlx" ]; then\
-		make -C ./lib/mlx clean $2 > /dev/null 2> /dev/null;\
+	@if [ -d "./lib/mlx" ]; then make -C ./lib/mlx clean $2 > /dev/null 2> /dev/null;\
 	fi
 	@echo "All unnecessery files cleared."
 re: fclean all

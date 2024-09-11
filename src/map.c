@@ -115,9 +115,6 @@ void	create_r_map(t_vars *vars)
 		printf("Error\nCreating new map error\n");
 		exit(EXIT_FAILURE);
 	}
-	// while (vars->temp_height--)
-	// 	free(vars->t_map[vars->temp_height]);
-	// free(vars->t_map);
 	if (check_border(vars) == false)
 		exit(EXIT_FAILURE);
 }

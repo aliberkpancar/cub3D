@@ -15,9 +15,9 @@ t_color	ft_get_gradient_val(t_color from, t_color to, float value)
 {
 	t_color	color;
 
-	color.red = ft_lerp(value, from.red, to.red);
-	color.green = ft_lerp(value, from.green, to.green);
-	color.blue = ft_lerp(value, from.blue, to.blue);
+	color.red = linear_interpolation(value, from.red, to.red);
+	color.green = linear_interpolation(value, from.green, to.green);
+	color.blue = linear_interpolation(value, from.blue, to.blue);
 	return (color);
 }
 

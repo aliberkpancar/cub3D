@@ -25,15 +25,11 @@ static int	close_window(t_vars *vars)
 
 int	main(int argc, char **argv)
 {
-	//flood fill
-	// headers will change
-	// multiple map
-	// Makefile wildcard
-	// if (ray_len == 0) draw.c:96
+	//delete sanitizer
 	// check ability of lock xpms?
-	// when change texture segfault
 	t_vars	vars;
 
+	//todo(abostano): free t_map and r_map at all exits.
 	if (argc != 2)
 		return (printf("Error\nInvalid argument\n"), 1);
 	if (is_cub_extension(argv[1]) == false)

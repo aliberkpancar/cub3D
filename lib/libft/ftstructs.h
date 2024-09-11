@@ -99,7 +99,7 @@ typedef union u_vec2
 		float	y;
 	};
 	float	data[2];
-}	t_vec2;
+}	t_vec;
 
 typedef union u_vec3
 {
@@ -183,7 +183,7 @@ typedef struct s_image
 
 typedef struct s_draw_line
 {
-	t_vec2	delta;
+	t_vec	delta;
 	float	inc;
 	float	side_check;
 	float	x;

@@ -12,7 +12,7 @@ static void	ft_drw_ln_hlpr_low(t_draw_line *d)
 	d->side_check = d->side_check + (2 * (d->delta.y - d->delta.x));
 }
 
-static void	ft_draw_line_low(t_mlx *dt, t_vec2 pt1, t_vec2 pt2, t_color color)
+static void	ft_draw_line_low(t_mlx *dt, t_vec pt1, t_vec pt2, t_color color)
 {
 	t_draw_line	d;
 
@@ -40,7 +40,7 @@ static void	ft_draw_line_low(t_mlx *dt, t_vec2 pt1, t_vec2 pt2, t_color color)
 	}
 }
 
-static void	ft_draw_line_high(t_mlx *dt, t_vec2 pt1, t_vec2 pt2, t_color color)
+static void	ft_draw_line_high(t_mlx *dt, t_vec pt1, t_vec pt2, t_color color)
 {
 	t_draw_line	d;
 
@@ -68,7 +68,7 @@ static void	ft_draw_line_high(t_mlx *dt, t_vec2 pt1, t_vec2 pt2, t_color color)
 	}
 }
 
-void	ft_draw_line(t_mlx *dt, t_vec2 pt1, t_vec2 pt2, t_color color)
+void	ft_draw_line(t_mlx *dt, t_vec pt1, t_vec pt2, t_color color)
 {
 	if (fabs(pt2.y - pt1.y) < fabs(pt2.x - pt1.x))
 	{

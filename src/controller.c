@@ -36,7 +36,7 @@ int	key_release_handler(int keycode, t_vars *vars)
 	return (0);
 }
 
-void	player_collision(t_vars *vars, t_vec2 next_pos)
+void	player_collision(t_vars *vars, t_vec next_pos)
 {
 	if (next_pos.x > vars->player.pos.x)
 	{
@@ -64,17 +64,17 @@ void	player_collision(t_vars *vars, t_vec2 next_pos)
 	}
 }
 
-void	player_movement(t_vars *vars, t_vec2 dir)
+void	player_movement(t_vars *vars, t_vec dir)
 {
-	t_vec2		next_pos;
+	t_vec		next_pos;
 
-	next_pos = ft_vec2_add(vars->player.pos,
-			ft_vec2_mul(dir, vars->player.move_speed * vars->delta_time));
+	next_pos = ft_vec_add(vars->player.pos,
+			ft_vec_mul(dir, vars->player.move_speed * vars->delta_time));
 	player_collision(vars, next_pos);
 }
 
 void	player_camera(t_vars *vars, t_bool rotate_dir)
 {
-	vars->player.dir = ft_vec2_rotate(vars->player.dir,
+	vars->player.dir = ft_vec_rotate(vars->player.dir,
 			vars->player.camera_speed * rotate_dir * vars->delta_time);
 }
