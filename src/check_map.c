@@ -13,10 +13,9 @@ static void	check_char(char c)
 
 void	check_r_map(t_vars *vars)
 {
-	int	i;
-	int	j;
-	//todo (abostano) : check if there is an multy map(looks like subject_x.cub)
-	// we should give "Error\nMultiple maps in the file\n" message
+	int i;
+	int j;
+
 	get_player_positions(vars);
 	i = 0;
 	while (i < vars->height)
