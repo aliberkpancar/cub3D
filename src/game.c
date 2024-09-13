@@ -60,10 +60,10 @@ int	game(void *param)
 	draw_walls(vars);
 	mlx_put_image_to_window(vars->mlx.mlx, vars->mlx.win.win,
 		vars->mlx.image.image, 0, 0);
+	draw_minimap(vars);
 	frame_rate = ft_itoa((int)(1 / vars->delta_time));
 	mlx_string_put(vars->mlx.mlx, vars->mlx.win.win, HEIGHT, WIDTH, g_magenta.value,
 		frame_rate);
-	draw_minimap(vars);
 	free(frame_rate);
 	return (0);
 }
