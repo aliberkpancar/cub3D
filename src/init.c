@@ -52,6 +52,7 @@ static void	init_tex(t_vars *vars, t_image *tex, char *path)
 		printf("Error\n");
 		free_t_map(vars);
 		free_r_map(vars);
+		free_textures(vars);
 		exit(EXIT_FAILURE);
 	}
 	tex->data = (t_color *)mlx_get_data_addr(tex->image, &tex->bits_per_pixel,
@@ -61,6 +62,7 @@ static void	init_tex(t_vars *vars, t_image *tex, char *path)
 		printf("Error\n");
 		free_t_map(vars);
 		free_r_map(vars);
+		free_textures(vars);
 		exit(EXIT_FAILURE);
 	}
 	tex->size_line /= (tex->bits_per_pixel / 8);
@@ -73,6 +75,7 @@ void	init_win(t_vars *vars)
 	{
 		free_t_map(vars);
 		free_r_map(vars);
+		free_textures(vars);
 		exit(EXIT_FAILURE);
 	}
 	vars->mlx.win.height = HEIGHT;
@@ -83,6 +86,7 @@ void	init_win(t_vars *vars)
 	{
 		free_t_map(vars);
 		free_r_map(vars);
+		free_textures(vars);
 		exit(EXIT_FAILURE);
 	}
 	vars->mlx.image.image = mlx_new_image(vars->mlx.mlx,
@@ -159,6 +163,7 @@ static void	get_map(t_vars *vars)
 		printf("Error\n");
 		free_t_map(vars);
 		free_r_map(vars);
+		free_textures(vars);
 		exit(EXIT_FAILURE);
 	}
 	j = 0;

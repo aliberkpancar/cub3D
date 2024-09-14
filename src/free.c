@@ -45,4 +45,17 @@ void	free_all(t_vars *vars)
 	}
 	free(vars->r_map);
 	free(vars->map.tiles);
+	free_textures(vars);
+}
+
+void	free_textures(t_vars *vars)
+{
+	if (vars->texture.east)
+		free(vars->texture.east);
+	if (vars->texture.west)
+		free(vars->texture.west);
+	if (vars->texture.north)
+		free(vars->texture.north);
+	if (vars->texture.south)
+		free(vars->texture.south);
 }

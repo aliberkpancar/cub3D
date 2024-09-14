@@ -176,6 +176,7 @@ char	*ft_strcpy(char *dst, const char *src);
 void	free_t_map(t_vars *vars);
 void	free_r_map(t_vars *vars);
 void	free_all(t_vars *vars);
+void	free_textures(t_vars *vars);
 void	destroy_window(t_vars *vars);
 
 #endif
