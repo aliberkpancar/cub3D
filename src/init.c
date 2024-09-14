@@ -146,6 +146,10 @@ static void	init_variables(t_vars *vars, char *map)
 	vars->player_count = 0;
 	get_dimensions(vars, map);
 	allocate_t_map(vars);
+	vars->texture.east = NULL;
+	vars->texture.west = NULL;
+	vars->texture.north = NULL;
+	vars->texture.south = NULL;
 }
 
 static void	get_map(t_vars *vars)

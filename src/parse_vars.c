@@ -24,6 +24,7 @@ void parse_color(t_vars *vars, char *line, t_color *color)
 void parse_texture(t_vars *vars, char *line, char **texture_path)
 {
 	char *newline_pos;
+	char *temp;
 
 	newline_pos = ft_strchr(line, '\n');
 	if (newline_pos)
@@ -35,5 +36,14 @@ void parse_texture(t_vars *vars, char *line, char **texture_path)
 		perror("Error allocating memory for texture path");
 		exit(EXIT_FAILURE);
 	}
-	*texture_path = ft_strjoin(*texture_path, ".xpm");
+	temp = ft_strjoin(*texture_path, ".xpm");
+	if (!temp)
+	{
+		free_t_map(vars);
+		free(*texture_path);
+		perror("Error allocating memory for texture path");
+		exit(EXIT_FAILURE);
+	}
+	free(*texture_path);
+	*texture_path = temp;
 }

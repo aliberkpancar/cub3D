@@ -98,7 +98,7 @@ void	draw_walls(t_vars *vars)
 	i = 0;
 	while (i < vars->collission_count)
 	{
-		if (ft_vec_equal(vars->collisions[i].pos, g_vec2_null))
+		if (ft_vec_equal(vars->collisions[i].pos, NULL_VEC))
 		{
 			i++;
 			continue ;

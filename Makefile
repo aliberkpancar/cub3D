@@ -31,7 +31,7 @@ GNL = lib/get_next_line/get_next_line.a
 
 INCLUDES = -I./lib/mlx -I./lib/get_next_line -I./lib/libft -I./inc
 
-CFLAGS = -O3 -Wall -Wextra -Werror -g
+CFLAGS = -O3 -Wall -Wextra -Werror -g -fsanitize=address
 
 MLX_FLAGS_LINUX = $(GNL) $(LIBFT) $(MLX) -Bdynamic -L/usr/lib/X11 -lXext -lX11 -lm
 

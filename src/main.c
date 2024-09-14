@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		KeyRelease, (1 << 1), key_release_handler, &vars);
 	mlx_hook(vars.mlx.win.win,
 		Destroy, (1 << 17), key_release_handler, &vars);
-	mlx_hook(vars.mlx.win.win, 17, 0, destroy, &vars);
+	mlx_hook(vars.mlx.win.win, 17, 0,  destroy, &vars);
 	mlx_loop_hook(vars.mlx.mlx, game, &vars);
 	mlx_loop(vars.mlx.mlx);
 	return (0);

@@ -8,15 +8,6 @@
 
 #  define PI		3.14159265358979323846
 
-static const t_vec	g_vec2_null = (t_vec){.x = 0, .y = 0};
-static const t_vec	g_vec2_i = (t_vec){.x = 1, .y = 0};
-static const t_vec	g_vec2_j = (t_vec){.x = 0, .y = 1};
-
-static const t_vec3	g_vec3_null = (t_vec3){.x = 0, .y = 0, .z = 0};
-static const t_vec3	g_vec3_i = (t_vec3){.x = 1, .y = 0, .z = 0};
-static const t_vec3	g_vec3_j = (t_vec3){.x = 0, .y = 1, .z = 0};
-static const t_vec3	g_vec3_k = (t_vec3){.x = 0, .y = 0, .z = 1};
-
 void		*ft_bzero(void *s, size_t n);
 char		*ft_strdup(const char *s);
 char		*ft_strchr(const char *s, int c);
