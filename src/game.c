@@ -6,12 +6,6 @@ static void	update_rays(t_vars *vars)
 	float	degree;
 
 	vars->collission_count = WIDTH;
-	// vars->collisions = ft_calloc(vars->collission_count, sizeof (t_hit));
-	// if (!vars->collisions)
-	// 	exit(EXIT_FAILURE);
-	// vars->collision_degree = ft_calloc(vars->collission_count, sizeof (float));
-	// if (vars->collision_degree == NULL)
-	// 	exit(EXIT_FAILURE);
 	degree = -(WIDTH / 2);
 	i = 0;
 	while (i < WIDTH)
@@ -37,7 +31,7 @@ void	update_player(t_vars *vars)
 	move_dir = ft_vec_norm(move_dir);
 	move_dir = ft_vec_rotate(move_dir,
 			ft_rad_to_deg(-atan2(vars->player.dir.x, vars->player.dir.y)));
-	move_dir = ft_vec_inversion(move_dir); //why we invert negative these directories?
+	move_dir = ft_vec_inversion(move_dir);
 	rotate_dir = inputs.left_key + inputs.right_key;
 	player_camera(vars, rotate_dir);
 	player_movement(vars, move_dir);

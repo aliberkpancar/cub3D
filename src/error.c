@@ -1,26 +1,24 @@
 #include "cub3d.h"
 
-void	check_fd_error(int fd)
+void	check_fd_error(t_vars *vars, int fd, int flag)
 {
 	if (fd == -1)
 	{
 		printf("Error\nOpening file error\n");
+		if (flag == 1)
+			free_t_map(vars);
 		exit(EXIT_FAILURE);
 	}
 }
 
-void	check_line_error(char *line, int fd)
+void	check_line_error(t_vars *vars, char *line, int fd, int flag)
 {
 	if (!line)
 	{
 		printf("Error\nEmpty file\n");
+		if (flag == 1)
+			free_t_map(vars);
 		close(fd);
 		exit(EXIT_FAILURE);
 	}
 }
-
-// void	allocation_error(void)
-// {
-// 	printf("Error\nAllocation error\n");
-// 	exit(EXIT_FAILURE);
-// }

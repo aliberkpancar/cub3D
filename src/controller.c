@@ -16,6 +16,7 @@ int	key_press_handler(int keycode, t_vars *vars)
 		vars->inputs.right_key = 1;
 	if (keycode == ESC_KEY)
 		exit(EXIT_SUCCESS);
+	//WHEN i free here, it aborts
 	return (0);
 }
 

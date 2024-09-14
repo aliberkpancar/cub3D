@@ -16,6 +16,7 @@
 # define MINIMAP_SCALE 0.2
 # define MINIMAP_WIDTH 200
 # define MINIMAP_HEIGHT 200
+# define NULL_VEC (t_vec){.x = 0, .y = 0}
 
 typedef union u_vec2i
 {
@@ -159,18 +160,22 @@ int		key_press_handler(int keycode, t_vars *vars);
 int		key_release_handler(int keycode, t_vars *vars);
 void	player_movement(t_vars *vars, t_vec dir);
 void	player_camera(t_vars *vars, t_bool rotate_dir);
-void	parse_color(char *line, t_color *color);
-void	parse_texture(char *line, char **texture_path);
+void	parse_color(t_vars *vars, char *line, t_color *color);
+void	parse_texture(t_vars *vars, char *line, char **texture_path);
 void	parse_map(t_vars *vars, char *file_path);
 void	get_dimensions(t_vars *vars, char *map_path);
 void	create_r_map(t_vars *vars);
 void	check_r_map(t_vars *vars);
 void	get_player_positions(t_vars *vars);
-void	check_fd_error(int fd);
-void	check_line_error(char *line, int fd);
+void	check_fd_error(t_vars *vars, int fd, int flag);
+void	check_line_error(t_vars *vars, char *line, int fd, int flag);
 t_bool	has_0_or_1(char *line);
 t_bool	has_F_and_C(char *line);
 void	draw_minimap(t_vars *vars);
 char	*ft_strcpy(char *dst, const char *src);
+void	free_t_map(t_vars *vars);
+void	free_r_map(t_vars *vars);
+void	free_all(t_vars *vars);
+void	destroy_window(t_vars *vars);
 
 #endif

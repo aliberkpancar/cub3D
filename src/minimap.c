@@ -91,7 +91,7 @@ void	draw_minimap(t_vars *vars)
 		x = 0;
 		while (x < vars->map.size.x)
 		{
-			ft_draw_rect(&vars->mlx, x * tile_size, y * tile_size, tile_size, tile_size, 0x000000);
+			ft_draw_rect(&vars->mlx, x * tile_size, y * tile_size, tile_size, tile_size, 0x97000000);
 			x++;
 		}
 		y++;

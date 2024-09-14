@@ -17,8 +17,9 @@ static bool	is_cub_extension(char *file)
 	return (true);
 }
 
-static int	close_window(t_vars *vars)
+static int	destroy(t_vars *vars)
 {
+	free_all(vars);
 	mlx_destroy_window(vars->mlx.mlx, vars->mlx.win.win);
 	exit(0);
 }
@@ -29,7 +30,6 @@ int	main(int argc, char **argv)
 	// check ability of lock xpms?
 	t_vars	vars;
 
-	//todo(abostano): free t_map and r_map at all exits.
 	if (argc != 2)
 		return (printf("Error\nInvalid argument\n"), 1);
 	if (is_cub_extension(argv[1]) == false)
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		KeyRelease, (1 << 1), key_release_handler, &vars);
 	mlx_hook(vars.mlx.win.win,
 		Destroy, (1 << 17), key_release_handler, &vars);
-	mlx_hook(vars.mlx.win.win, 17, 0, close_window, &vars);
+	mlx_hook(vars.mlx.win.win, 17, 0, destroy, &vars);
 	mlx_loop_hook(vars.mlx.mlx, game, &vars);
 	mlx_loop(vars.mlx.mlx);
 	return (0);

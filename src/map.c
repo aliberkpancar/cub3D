@@ -35,6 +35,7 @@ static char **allocate_r_map(t_vars *vars)
 	if (!vars->r_map)
 	{
 		printf("Error\nAllocating memory error for new map");
+		free_t_map(vars);
 		return (NULL);
 	}
 	vars->width = vars->temp_width;
@@ -45,6 +46,8 @@ static char **allocate_r_map(t_vars *vars)
 		if (!vars->r_map[i])
 		{
 			perror("Error allocating memory for new map");
+			free_t_map(vars);
+			free(vars->r_map);
 			return (NULL);
 		}
 		i++;
@@ -60,6 +63,7 @@ static char **add_b_lines(t_vars *vars)
 	if (!vars->r_map)
 	{
 		printf("Error\nAllocating memory error for new map");
+		free_t_map(vars);
 		exit(EXIT_FAILURE);
 	}
 	i = 0;
@@ -113,8 +117,13 @@ void	create_r_map(t_vars *vars)
 	if (!vars->r_map)
 	{
 		printf("Error\nCreating new map error\n");
+		free_t_map(vars);
 		exit(EXIT_FAILURE);
 	}
 	if (check_border(vars) == false)
+	{
+		free_t_map(vars);
+		free_r_map(vars);
 		exit(EXIT_FAILURE);
+	}
 }

@@ -40,6 +40,8 @@ void	get_player_positions(t_vars *vars)
 	if (vars->player_count != 1)
 	{
 		printf("Error\nInvalid player count\n");
+		free_t_map(vars);
+		free_r_map(vars);
 		exit(EXIT_FAILURE);
 	}
 }

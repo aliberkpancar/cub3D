@@ -1,12 +1,14 @@
 #include "cub3d.h"
 
-static void	check_char(char c)
+static void	check_char(t_vars *vars, char c)
 {
 	if (c != 'N' && c != 'S' && c != 'W' && c != 'E' && c != '1' &&
 		c != '*' && c != 'B' && c != '0' && c != ' ' && c != '\t' &&
 		c != '\n' && c != '\0')
 	{
 		printf("Error\nInvalid character in the map: %c\n", c);
+		free_t_map(vars);
+		free_r_map(vars);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -23,7 +25,7 @@ void	check_r_map(t_vars *vars)
 		j = 0;
 		while (j < vars->width)
 		{
-			check_char(vars->r_map[i][j]);
+			check_char(vars, vars->r_map[i][j]);
 			j++;
 		}
 		i++;

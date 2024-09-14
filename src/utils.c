@@ -19,9 +19,9 @@ void get_dimensions(t_vars *vars, char *map_path)
 
 	row = 0;
 	fd = open(map_path, O_RDONLY);
-	check_fd_error(fd);
+	check_fd_error(vars, fd, 0);
 	line = get_next_line(fd);
-	check_line_error(line, fd);
+	check_line_error(vars, line, fd, 0);
 	vars->temp_width = 0;
 	vars->temp_height = 0;
 	while (line)

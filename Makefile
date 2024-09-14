@@ -10,6 +10,7 @@ SRCS = 	$(SRC)/check_map.c \
 		$(SRC)/controller.c \
 		$(SRC)/draw.c \
 		$(SRC)/error.c \
+		$(SRC)/free.c \
 		$(SRC)/game.c \
 		$(SRC)/init.c \
 		$(SRC)/main.c \
