@@ -23,11 +23,11 @@ t_bool	has_F_and_C(char *line)
 	return (false);
 }
 
-static void	parse_t_map(t_vars *vars, char *line, int *x)
+static void	 parse_t_map(t_vars *vars, char *line, int *x)
 {
 	if (*x >= vars->temp_height)
 	{
-		printf("Error\nMap exceeds defined height\n");
+		printf("Error\n");
 		free_t_map(vars);
 		exit(EXIT_FAILURE);
 	}
