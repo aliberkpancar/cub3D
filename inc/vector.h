@@ -59,5 +59,3 @@ t_vec	ft_vec_div(t_vec vec, float div)
 }
 
 #endif
-
-

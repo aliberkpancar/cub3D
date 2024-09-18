@@ -35,7 +35,7 @@ static t_vec	hit_vertical(t_vars *vars, t_vec start, t_vec dir, float *dist)
 				return (ray.hit.pos);
 		ray.x += ray.step;
 	}
-	return (NULL_VEC);
+	return ((t_vec){.x = 0, .y = 0});
 }
 
 static void	init_horizontal_ray(t_raycast *ray, t_vec start, t_vec dir)
@@ -74,7 +74,7 @@ static t_vec	hit_horizontal(t_vars *cub3d, t_vec start, t_vec dir,
 				return (ray.hit.pos);
 		ray.y += ray.step;
 	}
-	return (NULL_VEC);
+	return ((t_vec){.x = 0, .y = 0});
 }
 
 void	raycast(t_vars *vars, t_vec start, t_vec dir, t_hit *out)

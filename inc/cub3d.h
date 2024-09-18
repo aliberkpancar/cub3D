@@ -16,7 +16,6 @@
 # define MINIMAP_SCALE 0.2
 # define MINIMAP_WIDTH 200
 # define MINIMAP_HEIGHT 200
-# define NULL_VEC (t_vec){.x = 0, .y = 0}
 
 typedef union u_vec2i
 {
@@ -73,7 +72,7 @@ typedef struct s_logger
 	FILE	*frame_log;
 }	t_logger;
 
-typedef struct	s_texture
+typedef struct s_texture
 {
 	char	*north;
 	char	*south;
@@ -117,7 +116,7 @@ typedef struct s_vars
 	float		collision_degree[WIDTH];
 	double		delta_time;
 	int			collission_count;
-	char 		**r_map;
+	char		**r_map;
 	char		**t_map;
 	t_mlx		mlx;
 	t_tile_map	map;
@@ -150,7 +149,7 @@ void	rotate_index(t_image *tex);
 void	mirror_tex(t_image *tex);
 float	get_tex_y(t_image *tex, float i, float height);
 void	draw_tex_helper(int *i, float *tex_y,
-	float *full_height, float *line_height);
+			float *full_height, float *line_height);
 t_color	*get_tex_data(t_image *tex, float tex_x);
 int		game(void *param);
 void	ft_draw_line(t_mlx *dt, t_vec pt1, t_vec pt2, t_color color);
