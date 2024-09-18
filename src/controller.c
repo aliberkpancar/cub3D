@@ -52,14 +52,14 @@ void	player_collision(t_vars *vars, t_vec next_pos)
 	}
 	if (next_pos.y > vars->player.pos.y)
 	{
-		if (vars->map.tiles[(int)vars->player.pos.x
-				+ ((int)(next_pos.y + PLAYER_SIZE) * vars->map.size.x)] != '1')
+		if (vars->map.tiles[(int)vars->player.pos.x \
+		+ (((int)(next_pos.y + PLAYER_SIZE)) * vars->map.size.x)] != '1')
 			vars->player.pos.y = next_pos.y;
 	}
 	else
 	{
-		if (vars->map.tiles[(int)vars->player.pos.x
-				+ ((int)(next_pos.y - PLAYER_SIZE) * vars->map.size.x)] != '1')
+		if (vars->map.tiles[(int)vars->player.pos.x \
+		+ (((int)(next_pos.y - PLAYER_SIZE)) * vars->map.size.x)] != '1')
 			vars->player.pos.y = next_pos.y;
 	}
 }
