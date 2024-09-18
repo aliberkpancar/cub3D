@@ -3,10 +3,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "ftstructs.h"
-# include "ftcolors.h"
 # include "ftinputs.h"
 
-#  define PI		3.14159265358979323846
+# define PI 3.14159265358979323846
 
 void		*ft_bzero(void *s, size_t n);
 char		*ft_strdup(const char *s);
@@ -44,6 +43,6 @@ t_color		ft_set_color(__uint8_t a, __uint8_t r, __uint8_t g, __uint8_t b);
 t_color		ft_get_gradient_val(t_color from, t_color to, float value);
 t_gradient	ft_set_gradient(t_color from, t_color to);
 t_gradient	ft_inv_gradient(t_gradient in);
-void	ft_put_pixel(t_image *image, int x, int y, t_color color);
+void		ft_put_pixel(t_image *image, int x, int y, t_color color);
 
 #endif

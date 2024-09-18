@@ -1,20 +1,5 @@
-#ifndef STRUCTS_H
-# define STRUCTS_H
-# if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
-
-typedef union u_color
-{
-	struct
-	{
-		unsigned char	alpha;
-		unsigned char	red;
-		unsigned char	green;
-		unsigned char	blue;
-	};
-	unsigned int	value;
-}	t_color;
-
-# else
+#ifndef FTSTRUCTS_H
+# define FTSTRUCTS_H
 
 typedef union u_color
 {
@@ -27,8 +12,6 @@ typedef union u_color
 	};
 	unsigned int	value;
 }	t_color;
-
-# endif
 
 typedef enum e_bool
 {
@@ -39,11 +22,10 @@ typedef enum e_bool
 
 typedef struct s_vector
 {
-	size_t	type_size;		//Type size in bytes.
-	size_t	buffer_size;	//Buffer size in bytes
-	size_t	lenght;			//Count of elements
-	char	buffer[1];		//Main buffer for storage
-	//C++ like vector struct.
+	size_t	type_size;
+	size_t	buffer_size;
+	size_t	lenght;
+	char	buffer[1];
 }	t_vector;
 
 typedef struct s_list
@@ -65,7 +47,7 @@ typedef enum e_types
 	type_char = sizeof(char),
 	type_pointer = sizeof(void *)
 }	t_types;
-//can be changed
+
 typedef struct s_kv_pair
 {
 	void				*key;
@@ -73,7 +55,7 @@ typedef struct s_kv_pair
 	t_bool				is_filled;
 	struct s_kv_pair	*next;
 }	t_kv_pair;
-//make more research about listing collision
+
 typedef struct s_hash_table
 {
 	size_t		(*hash)(void *data, size_t type);

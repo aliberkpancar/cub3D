@@ -29,6 +29,7 @@ void	draw2(t_vars *vars)
 	ft_draw_circle(&vars->mlx, player_minimap, PLAYER_RAD, 0xFF0000);
 	ft_draw_triangle(&vars->mlx, player_minimap,
 		atan2(vars->player.dir.y, vars->player.dir.x), 0x00FF00);
+	free (player_minimap);
 }
 
 static void	draw_bg(t_vars *vars)

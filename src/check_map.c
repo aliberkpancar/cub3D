@@ -13,6 +13,41 @@ static void	check_char(t_vars *vars, char c)
 	}
 }
 
+static void	set_order(char **keys)
+{
+	keys[0] = "NO";
+	keys[1] = "SO";
+	keys[2] = "WE";
+	keys[3] = "EA";
+}
+
+void	check_order(int fd)
+{
+	char	*tmp;
+	char	*keys[4];
+	int		i;
+
+	set_order(keys);
+	tmp = get_next_line(fd);
+	i = 0;
+	while (i < 4)
+	{
+		if (ft_strncmp(tmp, keys[i++], 2) == 0)
+		{
+			free(tmp);
+			tmp = get_next_line(fd);
+		}
+		else
+		{
+			close(fd);
+			free(tmp);
+			printf("Error\nWrong order or type for textures\n");
+			exit(EXIT_FAILURE);
+		}
+	}
+	free(tmp);
+}
+
 void	check_r_map(t_vars *vars)
 {
 	int	i;

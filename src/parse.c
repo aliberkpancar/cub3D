@@ -46,7 +46,10 @@ static void	parse_t_map(t_vars *vars, char *line, int *x)
 
 static void	parse_line(t_vars *vars, char *line, int *x, int *empty_line)
 {
-	if (line[0] == '\0' || line[0] == '\n')
+	if (line[0] == '\0' || line[0] == '\n' \
+	|| ((line[0] == ' ' || line[0] == '\t' || line[0] == '\v' \
+	|| line[0] == '\f' || line[0] == '\r') \
+	&& !has_special_digits(line)))
 		(*empty_line)++;
 	if (ft_strncmp(line, "NO ", 3) == 0)
 		parse_texture(vars, line + 3, &vars->texture.north);

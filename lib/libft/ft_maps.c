@@ -7,7 +7,6 @@ float	ft_normalize(float value, float min, float max)
 	return ((value - min) / (max - min));
 }
 
-
 float	linear_interpolation(float value, float min, float max)
 {
 	return ((value * (max - min)) + min);

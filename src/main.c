@@ -7,7 +7,7 @@ static bool	is_cub_extension(char *file)
 	int	i;
 
 	i = 0;
-	if (ft_strlen(file) < 5)
+	if (ft_strlen(file) <= 5)
 		return (false);
 	while (file[i])
 		i++;

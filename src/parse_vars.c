@@ -1,13 +1,45 @@
 #include "cub3d.h"
 
+static void	free_rgb(char **rgb)
+{
+	int	i;
+
+	i = 0;
+	while (rgb[i])
+		free(rgb[i++]);
+	free(rgb);
+}
+
+static int	check_f(char **rgb, char *line)
+{
+	int	i;
+	int	count;
+
+	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
+		return (1);
+	count = 0;
+	while (*line)
+	{
+		if (*line == ',')
+			count++;
+		line++;
+	}
+	i = 0;
+	while (i < 3 && ft_atoi(rgb[i]) >= 0 && ft_atoi(rgb[i]) <= 255)
+		i++;
+	if (count != 2 || i != 3)
+		return (1);
+	return (0);
+}
+
 void	parse_color(t_vars *vars, char *line, t_color *color)
 {
 	char	**rgb;
-	int		i;
 
 	rgb = ft_split(line, ',');
-	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
+	if (check_f(rgb, line) == 1)
 	{
+		free_rgb(rgb);
 		printf("Error\nInvalid color format\n");
 		free_t_map(vars);
 		exit(EXIT_FAILURE);
@@ -15,10 +47,7 @@ void	parse_color(t_vars *vars, char *line, t_color *color)
 	color->red = ft_atoi(rgb[0]);
 	color->green = ft_atoi(rgb[1]);
 	color->blue = ft_atoi(rgb[2]);
-	i = 0;
-	while (rgb[i])
-		free(rgb[i++]);
-	free(rgb);
+	free_rgb(rgb);
 }
 
 void	parse_texture(t_vars *vars, char *line, char **texture_path)

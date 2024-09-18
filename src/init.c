@@ -84,6 +84,11 @@ static void	get_map(t_vars *vars)
 
 void	init_game(t_vars *vars, char *map)
 {
+	int	fd;
+
+	fd = open(map, O_RDONLY);
+	check_order(fd);
+	close(fd);
 	init_variables(vars, map);
 	parse_map(vars, map);
 	init_player(vars);

@@ -192,5 +192,6 @@ void	ft_draw_circle(t_mlx *mlx, int *center, int radius, int color);
 void	ft_draw_rect(t_mlx *mlx, int x, int y, int color);
 void	ft_draw_line(t_mlx *mlx, t_vec pt1, t_vec pt2, t_color color);
 t_vec	set_vals(float x, float y);
+void	check_order(int fd);
 
 #endif

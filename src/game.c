@@ -57,7 +57,7 @@ int	game(void *param)
 	draw_minimap(vars);
 	frame_rate = ft_itoa((int)(1 / vars->delta_time));
 	mlx_string_put(vars->mlx.mlx, vars->mlx.win.win, HEIGHT, WIDTH,
-		g_magenta.value, frame_rate);
+		0x00ff00ff, frame_rate);
 	free(frame_rate);
 	return (0);
 }
