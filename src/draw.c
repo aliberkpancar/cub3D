@@ -87,11 +87,13 @@ void	draw_walls(t_vars *vars)
 	float	line_height;
 	float	ray_len;
 	int		i;
+	t_vec	null;
 
 	i = 0;
+	null = (t_vec){.x = 0, .y = 0};
 	while (i < vars->collission_count)
 	{
-		if (ft_vec_equal(vars->collisions[i].pos, (t_vec){.x = 0, .y = 0}))
+		if (ft_vec_equal(vars->collisions[i].pos, null))
 		{
 			i++;
 			continue ;

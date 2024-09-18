@@ -17,6 +17,15 @@
 # define MINIMAP_WIDTH 200
 # define MINIMAP_HEIGHT 200
 
+struct s_mini_temp
+{
+	int		steps;
+	float	x_inc;
+	float	y_inc;
+	float	x;
+	float	y;
+};
+
 typedef union u_vec2i
 {
 	struct
@@ -179,5 +188,9 @@ void	free_textures(t_vars *vars);
 void	init_player(t_vars *vars);
 void	init_textures(t_vars *vars);
 void	init_win(t_vars *vars);
+void	ft_draw_circle(t_mlx *mlx, int *center, int radius, int color);
+void	ft_draw_rect(t_mlx *mlx, int x, int y, int color);
+void	ft_draw_line(t_mlx *mlx, t_vec pt1, t_vec pt2, t_color color);
+t_vec	set_vals(float x, float y);
 
 #endif

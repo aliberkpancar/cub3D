@@ -22,7 +22,8 @@ SRCS = 	$(SRC)/alize.c \
 		$(SRC)/raycast.c \
 		$(SRC)/texture.c \
 		$(SRC)/utils.c \
-		$(SRC)/minimap.c
+		$(SRC)/minimap.c \
+		$(SRC)/minimap2.c
 
 MLX = lib/mlx/libmlx.a
 
