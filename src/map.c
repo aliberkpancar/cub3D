@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include "cub3d.h"
 
-static char	*ft_strcpy_with_b(t_vars *vars, char *dst, const char *src)
+static char	*strcpy_b(t_vars *vars, char *dst, const char *src)
 {
-	int i;
+	int	i;
 
 	if (!dst || !src)
 		return (NULL);
@@ -26,9 +26,9 @@ static char	*ft_strcpy_with_b(t_vars *vars, char *dst, const char *src)
 	return (dst);
 }
 
-static char **allocate_r_map(t_vars *vars)
+static char	**allocate_r_map(t_vars *vars)
 {
-	int i;
+	int	i;
 
 	vars->height = vars->temp_height + 2;
 	vars->r_map = (char **) malloc (sizeof(char *) * vars->height);
@@ -55,7 +55,7 @@ static char **allocate_r_map(t_vars *vars)
 	return (vars->r_map);
 }
 
-static char **add_b_lines(t_vars *vars)
+static char	**add_b_lines(t_vars *vars)
 {
 	int		i;
 
@@ -78,7 +78,7 @@ static char **add_b_lines(t_vars *vars)
 	i = 1;
 	while (i < vars->temp_height + 1)
 	{
-		vars->r_map[i] = ft_strcpy_with_b(vars, vars->r_map[i], vars->t_map[i - 1]);
+		vars->r_map[i] = strcpy_b(vars, vars->r_map[i], vars->t_map[i - 1]);
 		i++;
 	}
 	return (vars->r_map);
@@ -86,9 +86,9 @@ static char **add_b_lines(t_vars *vars)
 
 static t_bool	check_border(t_vars *vars)
 {
-	int i;
-	int j;
-	static char valid_chars[] = "1B \n";
+	int			i;
+	int			j;
+	static char	valid_chars[] = "1B \n";
 
 	i = 0;
 	while (i < vars->height)
@@ -98,11 +98,13 @@ static t_bool	check_border(t_vars *vars)
 		{
 			if (vars->r_map[i][j] == 'B')
 			{
-				if ((j + 1 < vars->width && !ft_strchr(valid_chars, vars->r_map[i][j + 1])) ||
-                    (j - 1 >= 0 && !ft_strchr(valid_chars, vars->r_map[i][j - 1])) ||
-                    (i + 1 < vars->height && !ft_strchr(valid_chars, vars->r_map[i + 1][j])) ||
-                    (i - 1 >= 0 && !ft_strchr(valid_chars, vars->r_map[i - 1][j])))
-					return (printf("Error\nMap is not surrounded by walls\n"), false);
+				if ((j + 1 < vars->width && !ft_strchr(valid_chars,
+							vars->r_map[i][j + 1])) || (j - 1 >= 0
+					&& !ft_strchr(valid_chars, vars->r_map[i][j - 1]))
+					|| (i + 1 < vars->height && !ft_strchr(valid_chars,
+					vars->r_map[i + 1][j])) || (i - 1 >= 0
+					&& !ft_strchr(valid_chars, vars->r_map[i - 1][j])))
+					return (printf("Error\nNot surrounded by walls\n"), false);
 			}
 			j++;
 		}

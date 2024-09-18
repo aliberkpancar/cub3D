@@ -76,14 +76,13 @@ void	ft_draw_triangle(t_mlx *mlx, int center_x, int center_y, int size, float di
 	ft_draw_line(mlx, pt3, pt1, color_vec);
 }
 
-
 void	draw_minimap(t_vars *vars)
 {
 	int	x;
 	int	y;
-	int tile_size = 10;
-	int player_minimap_x;
-	int player_minimap_y;
+	int	tile_size = 10;
+	int	player_minimap_x;
+	int	player_minimap_y;
 
 	y = 0;
 	while (y < vars->map.size.y)
@@ -108,7 +107,6 @@ void	draw_minimap(t_vars *vars)
 		}
 		y++;
 	}
-	
 	player_minimap_x = vars->player.pos.x * tile_size;
 	player_minimap_y = vars->player.pos.y * tile_size;
 	ft_draw_circle(&vars->mlx, player_minimap_x, player_minimap_y, PLAYER_RAD, 0xFF0000);

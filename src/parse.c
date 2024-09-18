@@ -1,7 +1,7 @@
 #include "cub3d.h"
 #include <stdbool.h>
 
-t_bool	has_0_or_1(char *line)
+t_bool	has_special_digits(char *line)
 {
 	while (*line)
 	{
@@ -12,7 +12,7 @@ t_bool	has_0_or_1(char *line)
 	return (false);
 }
 
-t_bool	has_F_and_C(char *line)
+t_bool	has_special_chars(char *line)
 {
 	while (*line)
 	{
@@ -23,7 +23,7 @@ t_bool	has_F_and_C(char *line)
 	return (false);
 }
 
-static void	 parse_t_map(t_vars *vars, char *line, int *x)
+static void	parse_t_map(t_vars *vars, char *line, int *x)
 {
 	if (*x >= vars->temp_height)
 	{
@@ -47,7 +47,7 @@ static void	 parse_t_map(t_vars *vars, char *line, int *x)
 static void	parse_line(t_vars *vars, char *line, int *x, int *empty_line)
 {
 	if (line[0] == '\0' || line[0] == '\n')
-		(*empty_line)++;	
+		(*empty_line)++;
 	if (ft_strncmp(line, "NO ", 3) == 0)
 		parse_texture(vars, line + 3, &vars->texture.north);
 	else if (ft_strncmp(line, "SO ", 3) == 0)
@@ -60,7 +60,7 @@ static void	parse_line(t_vars *vars, char *line, int *x, int *empty_line)
 		parse_color(vars, line + 2, &vars->floor);
 	else if (ft_strncmp(line, "C ", 2) == 0)
 		parse_color(vars, line + 2, &vars->ceiling);
-	else if (has_0_or_1(line))
+	else if (has_special_digits(line))
 		parse_t_map(vars, line, x);
 }
 

@@ -2,9 +2,9 @@
 
 static void	check_char(t_vars *vars, char c)
 {
-	if (c != 'N' && c != 'S' && c != 'W' && c != 'E' && c != '1' &&
-		c != '*' && c != 'B' && c != '0' && c != ' ' && c != '\t' &&
-		c != '\n' && c != '\0')
+	if (c != 'N' && c != 'S' && c != 'W' && c != 'E' && c != '1'
+		&& c != '*' && c != 'B' && c != '0' && c != ' ' && c != '\t'
+		&& c != '\n' && c != '\0')
 	{
 		printf("Error\nInvalid character in the map: %c\n", c);
 		free_t_map(vars);
@@ -15,8 +15,8 @@ static void	check_char(t_vars *vars, char c)
 
 void	check_r_map(t_vars *vars)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	get_player_positions(vars);
 	i = 0;

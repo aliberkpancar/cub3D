@@ -169,14 +169,16 @@ void	check_r_map(t_vars *vars);
 void	get_player_positions(t_vars *vars);
 void	check_fd_error(t_vars *vars, int fd, int flag);
 void	check_line_error(t_vars *vars, char *line, int fd, int flag);
-t_bool	has_0_or_1(char *line);
-t_bool	has_F_and_C(char *line);
+t_bool	has_special_digits(char *line);
+t_bool	has_special_chars(char *line);
 void	draw_minimap(t_vars *vars);
 char	*ft_strcpy(char *dst, const char *src);
 void	free_t_map(t_vars *vars);
 void	free_r_map(t_vars *vars);
 void	free_all(t_vars *vars);
 void	free_textures(t_vars *vars);
-void	destroy_window(t_vars *vars);
+void	init_player(t_vars *vars);
+void	init_textures(t_vars *vars);
+void	init_win(t_vars *vars);
 
 #endif

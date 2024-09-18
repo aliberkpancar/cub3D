@@ -46,7 +46,8 @@ float	get_tex_y(t_image *tex, float i, float height)
 		printf("Error\nInvalid values for i or height\n");
 		return (0.0f);
 	}
-	return (linear_interpolation(ft_normalize(i, 0, height), 0, tex->size_line));
+	return (linear_interpolation(ft_normalize(i, 0, height), 0,
+			tex->size_line));
 }
 
 void	draw_tex_helper(int *i, float *tex_y,
@@ -54,7 +55,6 @@ void	draw_tex_helper(int *i, float *tex_y,
 {
 	*i = 0;
 	*tex_y = 0;
-
 	if (*line_height < 0)
 	{
 		printf("Error\nLine_height is negative: %f\n", *line_height);
@@ -67,5 +67,6 @@ void	draw_tex_helper(int *i, float *tex_y,
 
 t_color	*get_tex_data(t_image *tex, float tex_x)
 {
-	return (tex->data + ((int)linear_interpolation(tex_x, 0, tex->size_line) * tex->size_line));
+	return (tex->data + ((int)linear_interpolation(tex_x, 0, tex->size_line)
+			* tex->size_line));
 }

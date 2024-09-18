@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 
 CC = gcc
 
@@ -6,7 +6,8 @@ SRC = src
 
 OBJ = obj
 
-SRCS = 	$(SRC)/check_map.c \
+SRCS = 	$(SRC)/alize.c \
+		$(SRC)/check_map.c \
 		$(SRC)/controller.c \
 		$(SRC)/draw.c \
 		$(SRC)/error.c \
@@ -31,7 +32,7 @@ GNL = lib/get_next_line/get_next_line.a
 
 INCLUDES = -I./lib/mlx -I./lib/get_next_line -I./lib/libft -I./inc
 
-CFLAGS = -O3 -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -O3 -Wall -Wextra -Werror
 
 MLX_FLAGS_LINUX = $(GNL) $(LIBFT) $(MLX) -Bdynamic -L/usr/lib/X11 -lXext -lX11 -lm
 

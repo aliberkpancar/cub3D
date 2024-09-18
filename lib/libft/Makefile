@@ -1,3 +1,5 @@
+NAME = libft.a
+
 SRCS = \
 	ft_atoi.c \
 	ft_bzero.c \
@@ -24,9 +26,7 @@ SRCS = \
 
 CC = gcc
 
-FLAGS = -g -Wall -Werror -Wextra
-
-NAME = libft.a
+FLAGS = -Wall -Werror -Wextra -g
 
 OBJECTS = $(SRCS:.c=.o)
 

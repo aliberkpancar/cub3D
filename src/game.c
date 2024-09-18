@@ -11,7 +11,7 @@ static void	update_rays(t_vars *vars)
 	while (i < WIDTH)
 	{
 		vars->collision_degree[i] = ft_rad_to_deg(atan(degree / WIDTH));
- 		raycast(vars, vars->player.pos,
+		raycast(vars, vars->player.pos,
 			ft_vec_rotate(vars->player.dir, vars->collision_degree[i]),
 			&vars->collisions[i]);
 		degree += 1;
@@ -56,8 +56,8 @@ int	game(void *param)
 		vars->mlx.image.image, 0, 0);
 	draw_minimap(vars);
 	frame_rate = ft_itoa((int)(1 / vars->delta_time));
-	mlx_string_put(vars->mlx.mlx, vars->mlx.win.win, HEIGHT, WIDTH, g_magenta.value,
-		frame_rate);
+	mlx_string_put(vars->mlx.mlx, vars->mlx.win.win, HEIGHT, WIDTH,
+		g_magenta.value, frame_rate);
 	free(frame_rate);
 	return (0);
 }

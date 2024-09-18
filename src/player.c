@@ -29,9 +29,8 @@ void	get_player_positions(t_vars *vars)
 		{
 			if (ft_strchr_player("NSEW", vars->t_map[i][j]))
 			{
-					vars->player_count++;
-					vars->player.pos.x = j + 0.5;
-					vars->player.pos.y = i + 0.5;
+				vars->player_count++;
+				vars->player.pos = (t_vec){.x = j + 0.5, .y = i + 0.5};
 			}
 			j++;
 		}

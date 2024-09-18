@@ -2,16 +2,16 @@
 
 static void	update_dimensions(t_vars *vars, char *line, int *row)
 {
-	int col;
+	int	col;
 
 	col = ft_strlen(line);
 	if (col > vars->temp_width)
 		vars->temp_width = col;
-	if (has_0_or_1(line))
+	if (has_special_digits(line))
 		(*row)++;
 }
 
-void get_dimensions(t_vars *vars, char *map_path)
+void	get_dimensions(t_vars *vars, char *map_path)
 {
 	int		fd;
 	char	*line;
@@ -26,7 +26,8 @@ void get_dimensions(t_vars *vars, char *map_path)
 	vars->temp_height = 0;
 	while (line)
 	{
-		if (line[0] == '1' || (has_0_or_1(line) && !has_F_and_C(line)))
+		if (line[0] == '1' || (has_special_digits(line)
+				&& !has_special_chars(line)))
 			update_dimensions(vars, line, &row);
 		free(line);
 		line = get_next_line(fd);
@@ -37,7 +38,7 @@ void get_dimensions(t_vars *vars, char *map_path)
 
 char	*ft_strcpy(char *dst, const char *src)
 {
-	int i;
+	int	i;
 
 	if (!dst || !src)
 		return (NULL);

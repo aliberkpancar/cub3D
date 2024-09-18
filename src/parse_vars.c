@@ -1,9 +1,9 @@
 #include "cub3d.h"
 
-void parse_color(t_vars *vars, char *line, t_color *color)
+void	parse_color(t_vars *vars, char *line, t_color *color)
 {
-	char **rgb;
-	int i;
+	char	**rgb;
+	int		i;
 
 	rgb = ft_split(line, ',');
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
@@ -21,10 +21,10 @@ void parse_color(t_vars *vars, char *line, t_color *color)
 	free(rgb);
 }
 
-void parse_texture(t_vars *vars, char *line, char **texture_path)
+void	parse_texture(t_vars *vars, char *line, char **texture_path)
 {
-	char *newline_pos;
-	char *temp;
+	char	*newline_pos;
+	char	*temp;
 
 	newline_pos = ft_strchr(line, '\n');
 	if (newline_pos)

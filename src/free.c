@@ -28,7 +28,7 @@ void	free_r_map(t_vars *vars)
 
 void	free_all(t_vars *vars)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < vars->temp_height)
