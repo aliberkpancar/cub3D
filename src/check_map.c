@@ -48,6 +48,23 @@ void	check_order(int fd)
 	free(tmp);
 }
 
+static void	fill_flood(t_vars *vars, int y, int x)
+{
+	if (y < 0 || x < 0 || y >= vars->height || x >= vars->width)
+		return ;
+	if (vars->r_map[y][x] == 'B')
+		return ;
+	if (vars->r_map[y][x] == '0' || vars->r_map[y][x] == '1' || vars->r_map[y][x] == 'W'
+		|| vars->r_map[y][x] == 'E' || vars->r_map[y][x] == 'N' || vars->r_map[y][x] == 'S')
+	{
+		vars->r_map[y][x] = '2';
+		fill_flood(vars, y + 1, x);
+		fill_flood(vars, y - 1, x);
+		fill_flood(vars, y, x + 1);
+		fill_flood(vars, y, x - 1);
+	}
+}
+
 void	check_r_map(t_vars *vars)
 {
 	int	i;
@@ -61,6 +78,25 @@ void	check_r_map(t_vars *vars)
 		while (j < vars->width)
 		{
 			check_char(vars, vars->r_map[i][j]);
+			j++;
+		}
+		i++;
+	} 
+	fill_flood(vars, vars->player.pos.y, vars->player.pos.x);
+	i = 0;
+	while (i < vars->height)
+	{
+		j = 0;
+		while (j < vars->width)
+		{
+			if (vars->r_map[i][j] == '0' || vars->r_map[i][j] == '1' || vars->r_map[i][j] == 'W'
+				|| vars->r_map[i][j] == 'E' || vars->r_map[i][j] == 'N' || vars->r_map[i][j] == 'S')
+			{
+				printf("Error\nMultiple maps\n");
+				free_t_map(vars);
+				free_r_map(vars);
+				exit(EXIT_FAILURE);
+			}
 			j++;
 		}
 		i++;

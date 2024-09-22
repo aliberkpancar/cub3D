@@ -32,11 +32,25 @@ static int	check_f(char **rgb, char *line)
 	return (0);
 }
 
+static int	ft_is_digit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
 void	parse_color(t_vars *vars, char *line, t_color *color)
 {
 	char	**rgb;
 
 	rgb = ft_split(line, ',');
+	if (!rgb || ft_is_digit(rgb[0][0]) == 0 || ft_is_digit(rgb[1][0]) == 0
+		|| ft_is_digit(rgb[2][0]) == 0)
+	{
+		free_t_map(vars);
+		printf("Error\n");
+		exit(EXIT_FAILURE);
+	}
 	if (check_f(rgb, line) == 1)
 	{
 		free_rgb(rgb);
