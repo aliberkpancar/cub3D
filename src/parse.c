@@ -85,7 +85,7 @@ void	parse_map(t_vars *vars, char *file_path)
 		parse_line(vars, line, &x, &empty_line);
 		if (empty_line >= 3)
 		{
-			printf("Error\nMultiple maps\n");
+			printf("Error\nMultiple maps or space\n");
 			free(line);
 			close(fd);
 			exit(EXIT_FAILURE);

@@ -87,7 +87,6 @@ void	init_game(t_vars *vars, char *map)
 	int	fd;
 
 	fd = open(map, O_RDONLY);
-	check_order(fd);
 	close(fd);
 	init_variables(vars, map);
 	parse_map(vars, map);
@@ -95,18 +94,6 @@ void	init_game(t_vars *vars, char *map)
 	vars->player.move_speed = 10;
 	vars->player.camera_speed = 100;
 	create_r_map(vars);
-	// int i = 0, j = 0;
-	// while (i < vars->height)
-	// {
-	// 	j = 0;
-	// 	while (j < vars->width)
-	// 	{
-	// 		printf("%c", vars->r_map[i][j]);
-	// 		j++;
-	// 	}
-	// 	printf("\n");
-	// 	i++;
-	// }
 	check_r_map(vars);
 	init_textures(vars);
 	init_win(vars);
