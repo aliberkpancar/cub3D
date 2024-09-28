@@ -29,17 +29,18 @@ static void	draw_face(struct s_draw_hlpr drw)
 	t_color	*data;
 
 	height = HEIGHT;
-	data = get_tex_data(drw.tex, drw.tex_x);
+	data = fetch_texture_data(drw.tex, drw.tex_x);
 	if (!data)
 		return ;
 	i = 0;
-	draw_tex_helper(&i, &tex_y, &height, &drw.line_height);
+	setup_texture_rendering(&i, &tex_y, &height, &drw.line_height);
 	while (i < drw.line_height)
 	{
 		if (height > HEIGHT)
-			tex_y = get_tex_y(drw.tex, i + ((height - HEIGHT) / 2), height);
+			tex_y = calculate_texture_y(drw.tex, height, i + \
+			((height - HEIGHT) / 2));
 		else
-			tex_y = get_tex_y(drw.tex, i, drw.line_height);
+			tex_y = calculate_texture_y(drw.tex, drw.line_height, i);
 		if (tex_y >= drw.tex->size_line)
 			tex_y = drw.tex->size_line - 1;
 		ft_put_pixel(&drw.vars->mlx.image, drw.index,

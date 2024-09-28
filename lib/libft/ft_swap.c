@@ -1,7 +1,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-void	ft_swap_int(int *a, int *b)
+void	swap_integers(int *a, int *b)
 {
 	if (!a || !b)
 	{

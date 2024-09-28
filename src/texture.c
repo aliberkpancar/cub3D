@@ -1,60 +1,42 @@
 #include "cub3d.h"
 
-void	rotate_index(t_image *tex)
+void	flip_texture(t_image *texture)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	half_col;
 
-	i = 0;
-	while (i < tex->size_line)
+	half_col = 0;
+	while (half_col < texture->size_line)
 	{
-		j = i;
-		while (j < tex->line_count)
+		row = 0;
+		while (row < texture->line_count / 2)
 		{
-			ft_swap_int((int *)(&(tex->data[j + (tex->size_line * i)].value)),
-				(int *)(&(tex->data[i + (tex->line_count * j)].value)));
-			j++;
+			swap_integers((int *) \
+			(&texture->data[half_col + (row * texture->size_line)].value), \
+			(int *)(&texture->data[half_col + ((texture->size_line - row - 1) \
+			* texture->size_line)].value));
+			row++;
 		}
-		i++;
+		half_col++;
 	}
 }
 
-void	mirror_tex(t_image *tex)
+float	calculate_texture_y(t_image *texture, float height, float position)
 {
-	int	i;
-	int	j;
-
-	j = 0;
-	while (j < tex->size_line)
+	if (position < 0 || height <= 0)
 	{
-		i = 0;
-		while (i < tex->line_count / 2)
-		{
-			ft_swap_int((int *)(&tex->data[j + (i * tex->size_line)].value),
-				(int *)(&tex->data[j + ((tex->size_line - i - 1)
-						* tex->size_line)].value));
-			i++;
-		}
-		j++;
-	}
-}
-
-float	get_tex_y(t_image *tex, float i, float height)
-{
-	if (i < 0 || height <= 0)
-	{
-		printf("Error\nInvalid values for i or height\n");
+		printf("Error\nInvalid values for position or height\n");
 		return (0.0f);
 	}
-	return (linear_interpolation(ft_normalize(i, 0, height), 0,
-			tex->size_line));
+	return (linear_interpolation(ft_normalize(position, 0, height), 0,
+			texture->size_line));
 }
 
-void	draw_tex_helper(int *i, float *tex_y,
+void	setup_texture_rendering(int *i, float *texture_y,
 	float *full_height, float *line_height)
 {
 	*i = 0;
-	*tex_y = 0;
+	*texture_y = 0;
 	if (*line_height < 0)
 	{
 		printf("Error\nLine_height is negative: %f\n", *line_height);
@@ -65,8 +47,29 @@ void	draw_tex_helper(int *i, float *tex_y,
 		*line_height = HEIGHT;
 }
 
-t_color	*get_tex_data(t_image *tex, float tex_x)
+t_color	*fetch_texture_data(t_image *texture, float texture_x)
 {
-	return (tex->data + ((int)linear_interpolation(tex_x, 0, tex->size_line)
-			* tex->size_line));
+	return (texture->data + \
+	((int)linear_interpolation(texture_x, 0, texture->size_line) \
+	* texture->size_line));
+}
+
+void	transform_texture(t_image *texture)
+{
+	int	row;
+	int	col;
+
+	row = 0;
+	while (row < texture->size_line)
+	{
+		col = row;
+		while (col < texture->line_count)
+		{
+			swap_integers((int *)(&(texture->data[col + \
+			(texture->size_line * row)].value)), \
+			(int *)(&(texture->data[row + (texture->line_count * col)].value)));
+			col++;
+		}
+		row++;
+	}
 }

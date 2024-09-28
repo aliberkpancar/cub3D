@@ -53,7 +53,7 @@ static void	init_tex(t_vars *vars, t_image *tex, char *path)
 		exit(EXIT_FAILURE);
 	}
 	tex->size_line /= (tex->bits_per_pixel / 8);
-	rotate_index(tex);
+	transform_texture(tex);
 }
 
 void	init_textures(t_vars *vars)
@@ -62,8 +62,8 @@ void	init_textures(t_vars *vars)
 	init_tex(vars, &vars->tex_west, vars->texture.south);
 	init_tex(vars, &vars->tex_north, vars->texture.west);
 	init_tex(vars, &vars->tex_east, vars->texture.east);
-	mirror_tex(&vars->tex_north);
-	mirror_tex(&vars->tex_east);
+	flip_texture(&vars->tex_north);
+	flip_texture(&vars->tex_east);
 }
 
 void	init_player(t_vars *vars)

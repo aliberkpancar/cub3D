@@ -154,12 +154,12 @@ struct s_draw_hlpr
 
 void	raycast(t_vars *vars, t_vec start, t_vec dir, t_hit *out);
 void	init_game(t_vars *vars, char *map);
-void	rotate_index(t_image *tex);
-void	mirror_tex(t_image *tex);
-float	get_tex_y(t_image *tex, float i, float height);
-void	draw_tex_helper(int *i, float *tex_y,
+void	transform_texture(t_image *tex);
+void	flip_texture(t_image *tex);
+float	calculate_texture_y(t_image *tex, float i, float height);
+void	setup_texture_rendering(int *i, float *tex_y,
 			float *full_height, float *line_height);
-t_color	*get_tex_data(t_image *tex, float tex_x);
+t_color	*fetch_texture_data(t_image *tex, float tex_x);
 int		game(void *param);
 void	ft_draw_line(t_mlx *dt, t_vec pt1, t_vec pt2, t_color color);
 void	draw_background(t_vars *vars);

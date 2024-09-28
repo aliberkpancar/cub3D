@@ -19,7 +19,7 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_substr(char const *s, int start, int len);
 int			ft_atoi(const char *str);
 char		*ft_itoa(int n);
-void		ft_swap_int(int *a, int *b);
+void		swap_integers(int *a, int *b);
 char		**ft_split(char const *s, char c);
 void		*ft_calloc(size_t nmemb, size_t size);
 float		degree_to_radian(float deg);
