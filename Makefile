@@ -19,7 +19,7 @@ SRCS = 	$(SRC)/alize.c \
 		$(SRC)/parse_vars.c \
 		$(SRC)/parse.c \
 		$(SRC)/player.c \
-		$(SRC)/raycast.c \
+		$(SRC)/raycast_utils.c \
 		$(SRC)/texture.c \
 		$(SRC)/utils.c \
 		$(SRC)/minimap.c \

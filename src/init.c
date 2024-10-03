@@ -28,7 +28,7 @@ static void	allocate_t_map(t_vars *vars)
 
 static void	init_variables(t_vars *vars, char *map)
 {
-	vars->inputs = (t_input){0};
+	vars->moves = (t_moves){0};
 	vars->mlx.mlx = mlx_init();
 	vars->ceiling = (t_color){0};
 	vars->floor = (t_color){0};

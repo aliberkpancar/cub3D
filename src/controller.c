@@ -3,17 +3,17 @@
 int	key_press_handler(int keycode, t_vars *vars)
 {
 	if (keycode == W_KEY)
-		vars->inputs.w_key = -1;
+		vars->moves.w_key = -1;
 	if (keycode == A_KEY)
-		vars->inputs.a_key = -1;
+		vars->moves.a_key = -1;
 	if (keycode == S_KEY)
-		vars->inputs.s_key = 1;
+		vars->moves.s_key = 1;
 	if (keycode == D_KEY)
-		vars->inputs.d_key = 1;
+		vars->moves.d_key = 1;
 	if (keycode == LEFT_KEY)
-		vars->inputs.left_key = -1;
+		vars->moves.left_key = -1;
 	if (keycode == RIGHT_KEY)
-		vars->inputs.right_key = 1;
+		vars->moves.right_key = 1;
 	if (keycode == ESC_KEY)
 		exit(EXIT_SUCCESS);
 	return (0);
@@ -22,17 +22,17 @@ int	key_press_handler(int keycode, t_vars *vars)
 int	key_release_handler(int keycode, t_vars *vars)
 {
 	if (keycode == W_KEY)
-		vars->inputs.w_key = 0;
+		vars->moves.w_key = 0;
 	if (keycode == A_KEY)
-		vars->inputs.a_key = 0;
+		vars->moves.a_key = 0;
 	if (keycode == S_KEY)
-		vars->inputs.s_key = 0;
+		vars->moves.s_key = 0;
 	if (keycode == D_KEY)
-		vars->inputs.d_key = 0;
+		vars->moves.d_key = 0;
 	if (keycode == LEFT_KEY)
-		vars->inputs.left_key = 0;
+		vars->moves.left_key = 0;
 	if (keycode == RIGHT_KEY)
-		vars->inputs.right_key = 0;
+		vars->moves.right_key = 0;
 	return (0);
 }
 

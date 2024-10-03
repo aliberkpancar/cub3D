@@ -2,8 +2,8 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
-# include "ftstructs.h"
-# include "ftinputs.h"
+# include "ft_structs.h"
+# include "ft_moves.h"
 
 # define PI 3.14159265358979323846
 

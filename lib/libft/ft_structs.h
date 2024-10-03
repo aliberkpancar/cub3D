@@ -1,5 +1,5 @@
-#ifndef FTSTRUCTS_H
-# define FTSTRUCTS_H
+#ifndef FT_STRUCTS_H
+# define FT_STRUCTS_H
 
 typedef union u_color
 {

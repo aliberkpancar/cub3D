@@ -1,5 +1,5 @@
-#ifndef FTINPUTS_H
-# define FTINPUTS_H
+#ifndef FTmoves_H
+# define FTmoves_H
 
 # ifdef __linux__
 

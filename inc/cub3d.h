@@ -44,11 +44,11 @@ typedef struct s_tile_map
 
 typedef struct s_player
 {
+	float	move_speed;
+	float	camera_speed;
 	t_vec	pos;
 	t_vec	dir;
 	t_vec	plane;
-	float	move_speed;
-	float	camera_speed;
 }	t_player;
 
 typedef enum e_face
@@ -65,21 +65,16 @@ typedef struct s_hit
 	t_face	face;
 }	t_hit;
 
-typedef struct s_input
+typedef struct s_moves
 {
+	t_bool	esc_key;
+	t_bool	right_key;
+	t_bool	left_key;
 	t_bool	w_key;
 	t_bool	a_key;
 	t_bool	s_key;
 	t_bool	d_key;
-	t_bool	right_key;
-	t_bool	left_key;
-	t_bool	esc_key;
-}	t_input;
-
-typedef struct s_logger
-{
-	FILE	*frame_log;
-}	t_logger;
+}	t_moves;
 
 typedef struct s_texture
 {
@@ -122,21 +117,20 @@ typedef struct s_vars
 	int			width;
 	int			height;
 	int			player_count;
-	float		collision_degree[WIDTH];
+	float		ray_angle[WIDTH];
 	double		delta_time;
-	int			collission_count;
+	int			num_of_rays;
 	char		**r_map;
 	char		**t_map;
 	t_mlx		mlx;
 	t_tile_map	map;
 	t_player	player;
-	t_input		inputs;
+	t_moves		moves;
 	t_image		tex_north;
 	t_image		tex_west;
 	t_image		tex_south;
 	t_image		tex_east;
 	t_hit		collisions[WIDTH];
-	t_logger	log;
 	t_texture	texture;
 	t_color		ceiling;
 	t_color		floor;
@@ -192,5 +186,10 @@ void	ft_draw_circle(t_mlx *mlx, int *center, int radius, int color);
 void	ft_draw_rect(t_mlx *mlx, int x, int y, int color);
 void	ft_draw_line(t_mlx *mlx, t_vec pt1, t_vec pt2, t_color color);
 t_vec	set_vals(float x, float y);
+void	init_vertical_ray(t_raycast *ray, t_vec start, t_vec dir);
+t_vec	hit_vertical(t_vars *vars, t_vec start, t_vec dir, float *dist);
+void	init_horizontal_ray(t_raycast *ray, t_vec start, t_vec dir);
+t_vec	hit_horizontal(t_vars *cub3d, t_vec start, t_vec dir,
+	float *dist);
 
 #endif

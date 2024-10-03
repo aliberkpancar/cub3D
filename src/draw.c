@@ -92,7 +92,7 @@ void	draw_walls(t_vars *vars)
 
 	i = 0;
 	null = (t_vec){.x = 0, .y = 0};
-	while (i < vars->collission_count)
+	while (i < vars->num_of_rays)
 	{
 		if (ft_vec_equal(vars->collisions[i].pos, null))
 		{
@@ -103,7 +103,7 @@ void	draw_walls(t_vars *vars)
 		if (ray_len == 0)
 			continue ;
 		line_height = HEIGHT / (ray_len
-				* cos(degree_to_radian(vars->collision_degree[i])));
+				* cos(degree_to_radian(vars->ray_angle[i])));
 		draw_wall_piece(vars, line_height, i, vars->collisions[i].face);
 		i++;
 	}
