@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/03 12:14:55 by apancar           #+#    #+#             */
+/*   Updated: 2024/10/03 12:14:56 by apancar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -82,14 +94,6 @@ typedef struct s_texture
 	char	*south;
 	char	*west;
 	char	*east;
-	int		north_width;
-	int		north_height;
-	int		south_width;
-	int		south_height;
-	int		west_width;
-	int		west_height;
-	int		east_width;
-	int		east_height;
 }			t_texture;
 
 typedef struct s_raycast
@@ -99,7 +103,6 @@ typedef struct s_raycast
 	int		offset;
 	int		step;
 	float	dist;
-	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
 	double	delta_dist_x;
@@ -189,7 +192,6 @@ t_vec	set_vals(float x, float y);
 void	init_vertical_ray(t_raycast *ray, t_vec start, t_vec dir);
 t_vec	hit_vertical(t_vars *vars, t_vec start, t_vec dir, float *dist);
 void	init_horizontal_ray(t_raycast *ray, t_vec start, t_vec dir);
-t_vec	hit_horizontal(t_vars *cub3d, t_vec start, t_vec dir,
-	float *dist);
+t_vec	hit_horizontal(t_vars *cub3d, t_vec start, t_vec dir, float *dist);
 
 #endif
