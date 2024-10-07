@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:06 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:16:07 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/07 18:36:43 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,9 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(vars.mlx.mlx, game, &vars);
 	mlx_loop(vars.mlx.mlx);
 	return (0);
+}
+
+__attribute__ ((destructor)) void f()
+{
+	system("leaks cub3D");
 }
