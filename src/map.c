@@ -116,7 +116,7 @@ static t_bool	check_border(t_vars *vars)
 					|| (i + 1 < vars->height && !ft_strchr(valid_chars,
 					vars->r_map[i + 1][j])) || (i - 1 >= 0
 					&& !ft_strchr(valid_chars, vars->r_map[i - 1][j])))
-					return (printf("Error\nNot surrounded by walls\n"), false);
+					return (printf("Error\n"), false);
 			}
 			j++;
 		}

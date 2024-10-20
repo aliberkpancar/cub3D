@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:26 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:16:27 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/17 09:41:31 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,21 @@ static int	ft_is_digit(char c)
 	return (0);
 }
 
-void	parse_color(t_vars *vars, char *line, t_color *color)
+void	parse_color(t_vars *vars, char *line, t_color *color, int **flag)
 {
 	char	**rgb;
+	int		i;
 
-	rgb = ft_split(line, ',');
+	if (**flag == 1)
+	{
+		free_t_map(vars);
+		printf("Error\n");
+		exit(EXIT_FAILURE);
+	}
+	i = 0;
+	while (line[i] == ' ')
+		i++;
+	rgb = ft_split(line + i, ',');
 	if (!rgb || ft_is_digit(rgb[0][0]) == 0 || ft_is_digit(rgb[1][0]) == 0
 		|| ft_is_digit(rgb[2][0]) == 0)
 	{
@@ -63,7 +73,7 @@ void	parse_color(t_vars *vars, char *line, t_color *color)
 		printf("Error\n");
 		exit(EXIT_FAILURE);
 	}
-	if (check_f(rgb, line) == 1)
+	if (check_f(rgb, line + i) == 1)
 	{
 		free_rgb(rgb);
 		printf("Error\nInvalid color format\n");
@@ -76,19 +86,29 @@ void	parse_color(t_vars *vars, char *line, t_color *color)
 	free_rgb(rgb);
 }
 
-void	parse_texture(t_vars *vars, char *line, char **texture_path)
+void	parse_texture(t_vars *vars, char *line, char **texture_path, int **flag)
 {
 	char	*newline_pos;
 	char	*temp;
+	int		i;
 
-	newline_pos = ft_strchr(line, '\n');
+	if (**flag == 1)
+	{
+		printf("Error\n");
+		free_t_map(vars);
+		exit(EXIT_FAILURE);
+	}
+	i = 0;
+	while (line[i] == ' ')
+		i++;
+	newline_pos = ft_strchr(line + i, '\n');
 	if (newline_pos)
 		*newline_pos = '\0';
-	*texture_path = ft_strdup(line);
+	*texture_path = ft_strdup(line + i);
 	if (*texture_path == NULL)
 	{
 		free_t_map(vars);
-		perror("Error allocating memory for texture path");
+		printf("Error\n");
 		exit(EXIT_FAILURE);
 	}
 	temp = ft_strjoin(*texture_path, ".xpm");
@@ -96,7 +116,7 @@ void	parse_texture(t_vars *vars, char *line, char **texture_path)
 	{
 		free_t_map(vars);
 		free(*texture_path);
-		perror("Error allocating memory for texture path");
+		printf("Error\n");
 		exit(EXIT_FAILURE);
 	}
 	free(*texture_path);

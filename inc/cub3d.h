@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:14:55 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:14:56 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/17 09:27:54 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,15 +158,15 @@ void	setup_texture_rendering(int *i, float *tex_y,
 			float *full_height, float *line_height);
 t_color	*fetch_texture_data(t_image *tex, float tex_x);
 int		game(void *param);
-void	ft_draw_line(t_mlx *dt, t_vec pt1, t_vec pt2, t_color color);
+void	ft_sketch_line(t_mlx *dt, t_vec pt1, t_vec pt2, t_color color);
 void	draw_background(t_vars *vars);
 void	draw_walls(t_vars *vars);
 int		key_press_handler(int keycode, t_vars *vars);
 int		key_release_handler(int keycode, t_vars *vars);
 void	player_movement(t_vars *vars, t_vec dir);
 void	player_camera(t_vars *vars, t_bool rotate_dir);
-void	parse_color(t_vars *vars, char *line, t_color *color);
-void	parse_texture(t_vars *vars, char *line, char **texture_path);
+void	parse_color(t_vars *vars, char *line, t_color *color, int **flag);
+void	parse_texture(t_vars *vars, char *line, char **texture_path, int **flag);
 void	parse_map(t_vars *vars, char *file_path);
 void	get_dimensions(t_vars *vars, char *map_path);
 void	create_r_map(t_vars *vars);
@@ -187,7 +187,7 @@ void	init_textures(t_vars *vars);
 void	init_win(t_vars *vars);
 void	ft_draw_circle(t_mlx *mlx, int *center, int radius, int color);
 void	ft_draw_rect(t_mlx *mlx, int x, int y, int color);
-void	ft_draw_line(t_mlx *mlx, t_vec pt1, t_vec pt2, t_color color);
+void	ft_sketch_line(t_mlx *mlx, t_vec pt1, t_vec pt2, t_color color);
 t_vec	set_vals(float x, float y);
 void	init_vertical_ray(t_raycast *ray, t_vec start, t_vec dir);
 t_vec	hit_vertical(t_vars *vars, t_vec start, t_vec dir, float *dist);

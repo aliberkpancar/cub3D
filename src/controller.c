@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:15:37 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:15:38 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/16 19:29:33 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ void	player_movement(t_vars *vars, t_vec dir)
 	t_vec		next_pos;
 
 	next_pos = ft_vec_add(vars->player.pos,
-			ft_vec_mul(dir, vars->player.move_speed * vars->delta_time));
+			ft_vec_mul(dir, vars->player.move_speed));
 	player_collision(vars, next_pos);
 }
 
 void	player_camera(t_vars *vars, t_bool rotate_dir)
 {
 	vars->player.dir = ft_vec_rotate(vars->player.dir,
-			vars->player.camera_speed * rotate_dir * vars->delta_time);
+			vars->player.camera_speed * rotate_dir);
 }

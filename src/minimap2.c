@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:20 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:16:21 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/17 09:27:54 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_draw_rect(t_mlx *mlx, int x, int y, int color)
 	}
 }
 
-void	ft_draw_line(t_mlx *mlx, t_vec pt1, t_vec pt2, t_color color)
+void	ft_sketch_line(t_mlx *mlx, t_vec pt1, t_vec pt2, t_color color)
 {
 	struct s_mini_temp	tmp;
 	int					i;

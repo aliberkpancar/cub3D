@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:15 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:16:16 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/17 09:27:54 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	ft_draw_triangle(t_mlx *mlx, int *center, float direction, int color)
 	pt3 = set_vals(center[0] + cos(direction - M_PI / 6)
 			* 20 / 1.5, center[1] + sin(direction - M_PI / 6) * 20 / 1.5);
 	color_vec.value = color;
-	ft_draw_line(mlx, pt1, pt2, color_vec);
-	ft_draw_line(mlx, pt2, pt3, color_vec);
-	ft_draw_line(mlx, pt3, pt1, color_vec);
+	ft_sketch_line(mlx, pt1, pt2, color_vec);
+	ft_sketch_line(mlx, pt2, pt3, color_vec);
+	ft_sketch_line(mlx, pt3, pt1, color_vec);
 }
 
 void	draw2(t_vars *vars)

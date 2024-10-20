@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliberk <aliberk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:06 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/07 18:36:43 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/20 10:57:10 by aliberk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-__attribute__ ((destructor)) void f()
-{
-	system("leaks cub3D");
-}
+// __attribute__ ((destructor)) void f()
+// {
+// 	system("leaks cub3D");
+// }

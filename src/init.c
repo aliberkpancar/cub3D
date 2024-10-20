@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:02 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:16:03 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/16 19:33:20 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void	init_game(t_vars *vars, char *map)
 	init_variables(vars, map);
 	parse_map(vars, map);
 	init_player(vars);
-	vars->player.move_speed = 10;
-	vars->player.camera_speed = 100;
+	vars->player.move_speed = 0.3;
+	vars->player.camera_speed = 2;
 	create_r_map(vars);
 	check_r_map(vars);
 	init_textures(vars);

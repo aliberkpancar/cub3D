@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:15:33 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:15:34 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/17 09:32:12 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,13 @@ void	check_r_map(t_vars *vars)
 		j = 0;
 		while (j < vars->width)
 		{
+			if (!(vars->r_map[i][0] == 'B' || vars->r_map[i][0] == '1'))
+			{
+				printf("Error\n");
+				free_t_map(vars);
+				free_r_map(vars);
+				exit(EXIT_FAILURE);
+			}
 			check_char(vars, vars->r_map[i][j]);
 			j++;
 		}
