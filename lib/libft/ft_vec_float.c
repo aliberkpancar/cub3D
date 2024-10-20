@@ -3,26 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vec_float.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliberk <aliberk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:19:54 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:19:55 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/20 11:39:33 by aliberk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <math.h>
 #include <stdio.h>
-
-float	ft_vec_dot(t_vec vec1, t_vec vec2)
-{
-	float	res;
-
-	res = 0;
-	res += vec1.x * vec2.x;
-	res += vec1.y * vec2.y;
-	return (res);
-}
 
 float	ft_vec_distance(t_vec point1, t_vec point2)
 {

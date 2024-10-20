@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliberk <aliberk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:20:07 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:20:08 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/20 11:39:26 by aliberk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_vec		ft_vec_div(t_vec vec, float div);
 t_vec		ft_vec_norm(t_vec vec);
 t_vec		ft_vec_inversion(t_vec vector);
 t_vec		ft_vec_rotate(t_vec vector, float degree);
-float		ft_vec_dot(t_vec vec1, t_vec vec2);
 float		ft_vec_distance(t_vec point1, t_vec point);
 float		ft_vec_mag(t_vec vec);
 t_color		ft_set_color(__uint8_t a, __uint8_t r, __uint8_t g, __uint8_t b);

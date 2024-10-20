@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliberk <aliberk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:15:33 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/17 09:32:12 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/20 11:20:27 by aliberk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ static void	check_fill(t_vars *vars)
 				|| vars->r_map[i][j] == 'N' || vars->r_map[i][j] == 'S')
 			{
 				printf("Error\nMultiple maps\n");
-				free_t_map(vars);
-				free_r_map(vars);
+				free_all(vars);
 				exit(EXIT_FAILURE);
 			}
 			j++;

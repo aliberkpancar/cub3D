@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/Users/apancar/Desktop/cub3D/src",
-      "program": "/Users/apancar/Desktop/cub3D/src/build/Debug/outDebug",
+      "cwd": "/Users/aliberk/Desktop/cubgit/src",
+      "program": "/Users/aliberk/Desktop/cubgit/src/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
