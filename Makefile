@@ -59,7 +59,7 @@ $(OBJ):
 
 $(NAME): $(OBJS) $(MLX) $(LIBFT) $(GNL)
 	@echo "Compiling CUB3D..."
-	@$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(GNL) $(MLX_FLAGS)
+	@$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(MLX_FLAGS)
 
 $(MLX):
 	@if [ ! -d "./lib/mlx" ]; then\

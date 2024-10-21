@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliberk <aliberk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:47 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:16:48 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/21 07:34:22 by aliberk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@ static void	update_dimensions(t_vars *vars, char *line, int *row)
 		vars->temp_width = col;
 	if (has_special_digits(line))
 		(*row)++;
+}
+
+static void	check_dimensions(t_vars *vars, int *fd)
+{
+	if (vars->temp_width > 60 || vars->temp_height > 50)
+	{
+		printf("Error\nInvalid map dimensions");
+		close(*fd);
+		exit(EXIT_FAILURE);
+	}
 }
 
 void	get_dimensions(t_vars *vars, char *map_path)
@@ -45,6 +55,7 @@ void	get_dimensions(t_vars *vars, char *map_path)
 		line = get_next_line(fd);
 	}
 	vars->temp_height = row;
+	check_dimensions(vars, &fd);
 	close(fd);
 }
 

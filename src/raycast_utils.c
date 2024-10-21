@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliberk <aliberk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:38 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:16:39 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/21 06:25:04 by aliberk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_vec	hit_horizontal(t_vars *cub3d, t_vec start, t_vec dir,
 		ray.x = ((dir.x / dir.y) * (ray.y - start.y)) + start.x;
 		ray.hit.pos = (t_vec){.x = ray.x, .y = ray.y};
 		*dist = ft_vec_mag(ft_vec_sub(ray.hit.pos, start));
-		if (*dist >= 100)
+		if (*dist >= 50)
 			break ;
 		if (ray.x >= 0 && ray.x < cub3d->map.size.x && ray.y
 			+ ray.offset >= 0 && ray.y + ray.offset < cub3d->map.size.y)
@@ -77,7 +77,7 @@ t_vec	hit_vertical(t_vars *vars, t_vec start, t_vec dir, float *dist)
 		ray.y = ((dir.y / dir.x) * (ray.x - start.x)) + start.y;
 		ray.hit.pos = (t_vec){.x = ray.x, .y = ray.y};
 		*dist = ft_vec_mag(ft_vec_sub(ray.hit.pos, start));
-		if (*dist >= 100)
+		if (*dist >= 50)
 			break ;
 		if (ray.y >= 0 && ray.y < vars->map.size.y && ray.x
 			+ ray.offset >= 0 && ray.x + ray.offset < vars->map.size.x)
