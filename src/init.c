@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliberk <aliberk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:02 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/21 07:15:31 by aliberk          ###   ########.fr       */
+/*   Updated: 2024/10/21 18:55:34 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,11 @@ void	init_game(t_vars *vars, char *map)
 
 	fd = open(map, O_RDONLY);
 	init_variables(vars, map);
-	parse_map(vars, map);
+	parse_map(vars, map, 0, 0);
 	close(fd);
 	init_player(vars);
-	vars->player.move_speed = 1;
-	vars->player.camera_speed = 10;
+	vars->player.move_speed = 0.2;
+	vars->player.camera_speed = 3;
 	create_r_map(vars);
 	check_r_map(vars);
 	init_textures(vars);

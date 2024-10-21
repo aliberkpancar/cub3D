@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:26 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/17 09:41:31 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/21 18:47:40 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,22 @@ static int	ft_is_digit(char c)
 	return (0);
 }
 
+static void	check_flag(t_vars *vars, int ***flag)
+{
+	if (***flag == 1)
+	{
+		printf("Error\n");
+		free_t_map(vars);
+		exit(EXIT_FAILURE);
+	}
+}
+
 void	parse_color(t_vars *vars, char *line, t_color *color, int **flag)
 {
 	char	**rgb;
 	int		i;
 
-	if (**flag == 1)
-	{
-		free_t_map(vars);
-		printf("Error\n");
-		exit(EXIT_FAILURE);
-	}
+	check_flag(vars, &flag);
 	i = 0;
 	while (line[i] == ' ')
 		i++;
@@ -92,12 +97,7 @@ void	parse_texture(t_vars *vars, char *line, char **texture_path, int **flag)
 	char	*temp;
 	int		i;
 
-	if (**flag == 1)
-	{
-		printf("Error\n");
-		free_t_map(vars);
-		exit(EXIT_FAILURE);
-	}
+	check_flag(vars, &flag);
 	i = 0;
 	while (line[i] == ' ')
 		i++;

@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:30 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/17 09:25:19 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/21 18:56:24 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,12 @@ static void	parse_line(t_vars *vars, char *line, int *x, int *flag)
 	}
 }
 
-void	parse_map(t_vars *vars, char *file_path)
+void	parse_map(t_vars *vars, char *file_path, int flag, int flagi)
 {
 	int		x;
 	int		fd;
 	char	*line;
-	int		flag;
-	int		flagi;
 
-	flag = 0;
-	flagi = 0;
 	fd = open(file_path, O_RDONLY);
 	check_fd_error(vars, fd, 1);
 	line = get_next_line(fd);

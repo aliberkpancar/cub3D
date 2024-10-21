@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:14:55 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/17 09:27:54 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/21 18:57:02 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ void	player_movement(t_vars *vars, t_vec dir);
 void	player_camera(t_vars *vars, t_bool rotate_dir);
 void	parse_color(t_vars *vars, char *line, t_color *color, int **flag);
 void	parse_texture(t_vars *vars, char *line, char **texture_path, int **flag);
-void	parse_map(t_vars *vars, char *file_path);
+void	parse_map(t_vars *vars, char *file_path, int flag, int flagi);
 void	get_dimensions(t_vars *vars, char *map_path);
 void	create_r_map(t_vars *vars);
 void	check_r_map(t_vars *vars);
