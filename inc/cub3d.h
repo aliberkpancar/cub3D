@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:14:55 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/21 18:57:02 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/26 11:47:12 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,5 +193,8 @@ void	init_vertical_ray(t_raycast *ray, t_vec start, t_vec dir);
 t_vec	hit_vertical(t_vars *vars, t_vec start, t_vec dir, float *dist);
 void	init_horizontal_ray(t_raycast *ray, t_vec start, t_vec dir);
 t_vec	hit_horizontal(t_vars *cub3d, t_vec start, t_vec dir, float *dist);
+void	free_rgb(char **rgb);
+void	dispose_t_map(t_vars *vars);
+void	check_flag(t_vars *vars, int ***flag);
 
 #endif

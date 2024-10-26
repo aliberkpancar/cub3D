@@ -16,6 +16,7 @@ SRCS = 	$(SRC)/alize.c \
 		$(SRC)/init.c \
 		$(SRC)/main.c \
 		$(SRC)/map.c \
+		$(SRC)/parse_utils.c \
 		$(SRC)/parse_vars.c \
 		$(SRC)/parse.c \
 		$(SRC)/player.c \
