@@ -18,15 +18,8 @@ WE                ./texture/path_to_the_west_texture
 
 
 
-
-
-
-
-
-
-F              62,62,62
+F                                          62,162,62
 EA           ./texture/path_to_the_east_texture
-
 
                       1111111111111111111111111
                       1011000001110000000000001

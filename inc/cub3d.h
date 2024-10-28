@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:14:55 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/26 11:47:12 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/28 14:39:15 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,8 @@ int		key_release_handler(int keycode, t_vars *vars);
 void	player_movement(t_vars *vars, t_vec dir);
 void	player_camera(t_vars *vars, t_bool rotate_dir);
 void	parse_color(t_vars *vars, char *line, t_color *color, int **flag);
-void	parse_texture(t_vars *vars, char *line, char **texture_path, int **flag);
+void	parse_texture(t_vars *vars, char *line,
+			char **texture_path, int **flag);
 void	parse_map(t_vars *vars, char *file_path, int flag, int flagi);
 void	get_dimensions(t_vars *vars, char *map_path);
 void	create_r_map(t_vars *vars);
@@ -180,7 +181,6 @@ void	draw_minimap(t_vars *vars);
 char	*ft_strcpy(char *dst, const char *src);
 void	free_t_map(t_vars *vars);
 void	free_r_map(t_vars *vars);
-void	free_all(t_vars *vars);
 void	free_textures(t_vars *vars);
 void	init_player(t_vars *vars);
 void	init_textures(t_vars *vars);
@@ -196,5 +196,6 @@ t_vec	hit_horizontal(t_vars *cub3d, t_vec start, t_vec dir, float *dist);
 void	free_rgb(char **rgb);
 void	dispose_t_map(t_vars *vars);
 void	check_flag(t_vars *vars, int ***flag);
+void	free_all(t_vars *vars, int flag);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 11:40:32 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/26 11:47:49 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/28 16:47:01 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	parse_color(t_vars *vars, char *line, t_color *color, int **flag)
 	while (line[i] == ' ')
 		i++;
 	rgb = ft_split(line + i, ',');
-	if (!rgb || ft_is_digit(rgb[0][0]) == 0 || ft_is_digit(rgb[1][0]) == 0
-		|| ft_is_digit(rgb[2][0]) == 0)
+	if (!rgb || !rgb[0] || ft_is_digit(rgb[0][0]) == 0 || !rgb[1] \
+	|| ft_is_digit(rgb[1][0]) == 0 || !rgb[2] || ft_is_digit(rgb[2][0]) == 0)
 		dispose_t_map(vars);
 	if (check_f(rgb, line + i) == 1)
 	{

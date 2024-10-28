@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:06 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/26 11:48:18 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/28 14:37:52 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static bool	is_cub_extension(char *file)
 
 static int	destroy(t_vars *vars)
 {
-	free_all(vars);
+	free_all(vars, 1);
 	mlx_destroy_window(vars->mlx.mlx, vars->mlx.win.win);
 	exit(0);
 }

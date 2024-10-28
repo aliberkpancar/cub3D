@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:15:53 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/07 18:46:54 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/28 14:19:03 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_r_map(t_vars *vars)
 	free(vars->r_map);
 }
 
-void	free_all(t_vars *vars)
+void	free_all(t_vars *vars, int flag)
 {
 	int	i;
 
@@ -55,7 +55,8 @@ void	free_all(t_vars *vars)
 		free(vars->r_map[i]);
 		i++;
 	}
-	free(vars->map.tiles);
+	if (flag == 1)
+		free(vars->map.tiles);
 	free(vars->r_map);
 	free_textures(vars);
 }

@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:18:24 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:18:25 by apancar          ###   ########.fr       */
+/*   Updated: 2024/10/28 14:28:51 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ int	ft_atoi(const char *str)
 		num = num * 10 + (str[i] - '0');
 		i++;
 	}
+	if ((str[i] >= 'a' && str[i] <= 'z')
+		|| (str[i] >= 'A' && str[i] <= 'Z') || str[i] == ' ')
+		return (-1);
 	return (sign * num);
 }
