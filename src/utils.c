@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliberk <aliberk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:47 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/21 07:34:22 by aliberk          ###   ########.fr       */
+/*   Updated: 2024/11/05 19:38:06 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ void	get_dimensions(t_vars *vars, char *map_path)
 	vars->temp_height = 0;
 	while (line)
 	{
+		if (has_special_b(line))
+		{
+			printf("Error\n");
+			close(fd);
+			exit(EXIT_FAILURE);
+		}
 		if (line[0] == '1' || (has_special_digits(line)
 				&& !has_special_chars(line)))
 			update_dimensions(vars, line, &row);

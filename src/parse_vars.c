@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:26 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/26 11:47:44 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/05 19:33:07 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,15 @@ void	parse_texture(t_vars *vars, char *line, char **texture_path, int **flag)
 		*newline_pos = '\0';
 	*texture_path = ft_strdup(line + i);
 	if (*texture_path == NULL)
+	{
+		printf("Error\n");
 		dispose_t_map(vars);
+	}
 	temp = ft_strjoin(*texture_path, ".xpm");
 	if (!temp)
 	{
 		free(*texture_path);
+		printf("Error\n");
 		dispose_t_map(vars);
 	}
 	free(*texture_path);

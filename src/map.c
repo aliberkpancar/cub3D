@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:11 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:16:12 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/05 19:49:49 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static char	**allocate_r_map(t_vars *vars)
 		vars->r_map[i] = (char *) malloc (vars->width + 1);
 		if (!vars->r_map[i])
 		{
-			perror("Error allocating memory for new map");
+			printf("Error\n");
 			free_t_map(vars);
 			free(vars->r_map);
 			return (NULL);
@@ -136,8 +136,7 @@ void	create_r_map(t_vars *vars)
 	}
 	if (check_border(vars) == false)
 	{
-		free_t_map(vars);
-		free_r_map(vars);
+		free_all(vars, 0);
 		exit(EXIT_FAILURE);
 	}
 }

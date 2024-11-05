@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:06 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/28 14:37:52 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/05 19:34:26 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,3 +56,4 @@ int	main(int argc, char **argv)
 	mlx_loop(vars.mlx.mlx);
 	return (0);
 }
+

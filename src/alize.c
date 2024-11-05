@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:15:26 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:15:27 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/05 19:30:23 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ static void	init_tex(t_vars *vars, t_image *tex, char *path)
 	if (!tex->image)
 	{
 		printf("Error\n");
-		free_t_map(vars);
-		free_r_map(vars);
-		free_textures(vars);
+		free_all(vars, 0);
 		exit(EXIT_FAILURE);
 	}
 	tex->data = (t_color *)mlx_get_data_addr(tex->image, &tex->bits_per_pixel,
@@ -59,9 +57,7 @@ static void	init_tex(t_vars *vars, t_image *tex, char *path)
 	if (!tex->data)
 	{
 		printf("Error\n");
-		free_t_map(vars);
-		free_r_map(vars);
-		free_textures(vars);
+		free_all(vars, 0);
 		exit(EXIT_FAILURE);
 	}
 	tex->size_line /= (tex->bits_per_pixel / 8);

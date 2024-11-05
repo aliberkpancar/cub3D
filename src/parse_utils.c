@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 11:40:32 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/28 16:47:01 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/05 19:32:45 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,30 @@ static int	check_f(char **rgb, char *line)
 	return (0);
 }
 
+static void	check_rgb(char **rgb)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (rgb[i])
+	{
+		j = 0;
+		while (rgb[i][j])
+		{
+			if (ft_is_digit(rgb[i][j]) == 0)
+			{
+				free_rgb(rgb);
+				printf("Error\n");
+				exit(1);
+			}
+			j++;
+		}
+		i++;
+	}
+		
+}
+
 void	parse_color(t_vars *vars, char *line, t_color *color, int **flag)
 {
 	char	**rgb;
@@ -53,12 +77,18 @@ void	parse_color(t_vars *vars, char *line, t_color *color, int **flag)
 	rgb = ft_split(line + i, ',');
 	if (!rgb || !rgb[0] || ft_is_digit(rgb[0][0]) == 0 || !rgb[1] \
 	|| ft_is_digit(rgb[1][0]) == 0 || !rgb[2] || ft_is_digit(rgb[2][0]) == 0)
+	{
+		free_rgb(rgb);
+		printf("Error\n");
 		dispose_t_map(vars);
+	}
 	if (check_f(rgb, line + i) == 1)
 	{
 		free_rgb(rgb);
+		printf("Error\n");
 		dispose_t_map(vars);
 	}
+	check_rgb(rgb);
 	color->red = ft_atoi(rgb[0]);
 	color->green = ft_atoi(rgb[1]);
 	color->blue = ft_atoi(rgb[2]);

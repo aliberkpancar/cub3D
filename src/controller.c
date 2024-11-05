@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:15:37 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/16 19:29:33 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/05 19:31:02 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	key_press_handler(int keycode, t_vars *vars)
 	if (keycode == RIGHT_KEY)
 		vars->moves.right_key = 1;
 	if (keycode == ESC_KEY)
-		exit(EXIT_SUCCESS);
+			exit(EXIT_SUCCESS);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:34 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/16 15:23:21 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/05 19:33:32 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void	get_player_positions(t_vars *vars)
 	if (vars->player_count != 1)
 	{
 		printf("Error\nInvalid player count\n");
-		free_t_map(vars);
-		free_r_map(vars);
+		free_all(vars, 0);
 		exit(EXIT_FAILURE);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:18:56 by apancar           #+#    #+#             */
-/*   Updated: 2024/10/03 12:18:57 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/05 18:34:17 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_wordlenght(const char *str, char c)
 	int	i;
 
 	i = 0;
-	while (str[i] != c && str[i])
+	while (str[i] != c && str[i] && str[i] != '\n')
 		i++;
 	return (i);
 }
