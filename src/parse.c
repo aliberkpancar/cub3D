@@ -6,45 +6,12 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:30 by apancar           #+#    #+#             */
-/*   Updated: 2024/11/05 19:35:22 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/07 12:16:08 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdbool.h>
-
-t_bool	has_special_digits(char *line)
-{
-	while (*line)
-	{
-		if (*line == '0' || *line == '1')
-			return (true);
-		line++;
-	}
-	return (false);
-}
-
-t_bool	has_special_chars(char *line)
-{
-	while (*line)
-	{
-		if (*line == 'F' || *line == 'C')
-			return (true);
-		line++;
-	}
-	return (false);
-}
-
-t_bool	has_special_b(char *line)
-{
-	while (*line)
-	{
-		if (*line == 'B')
-			return (true);
-		line++;
-	}
-	return (false);
-}
 
 static void	parse_t_map(t_vars *vars, char *line, int *x)
 {
@@ -66,9 +33,10 @@ static void	parse_t_map(t_vars *vars, char *line, int *x)
 	vars->t_map[*x][vars->temp_width] = '\0';
 	(*x)++;
 }
-static int ft_empty(char *line)
+
+static int	ft_empty(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while ((line[i] <= 13 && line[i] >= 9) || (line[i] == 32))
@@ -77,6 +45,7 @@ static int ft_empty(char *line)
 		return (1);
 	return (0);
 }
+
 static void	parse_line(t_vars *vars, char *line, int *x, int *flag)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0)
@@ -102,11 +71,12 @@ static void	parse_line(t_vars *vars, char *line, int *x, int *flag)
 		free_t_map(vars);
 		exit(EXIT_FAILURE);
 	}
-	
+	free(line);
 }
 
 static void	check_duplicate_line(char *line, int i[])
 {
+	ft_bzero(i, 24);
 	if (ft_strncmp(line, "NO ", 3) == 0 && i[0] == 0)
 		i[0] = 1;
 	else if (ft_strncmp(line, "SO ", 3) == 0 && i[1] == 0)
@@ -136,7 +106,7 @@ void	parse_map(t_vars *vars, char *file_path, int flag, int flagi)
 	int		x;
 	int		fd;
 	char	*line;
-	int		i[]= {0, 0, 0, 0, 0, 0};
+	int		i[6];
 
 	fd = open(file_path, O_RDONLY);
 	check_fd_error(vars, fd, 1);
@@ -147,7 +117,6 @@ void	parse_map(t_vars *vars, char *file_path, int flag, int flagi)
 	{
 		check_duplicate_line(line, i);
 		parse_line(vars, line, &x, &flag);
-		free(line);
 		line = get_next_line(fd);
 		if (flag == 1 && line && line[0] == '\n')
 			flagi = 1;

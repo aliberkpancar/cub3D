@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:47 by apancar           #+#    #+#             */
-/*   Updated: 2024/11/05 19:38:06 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/07 12:33:26 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,15 @@ static void	check_dimensions(t_vars *vars, int *fd)
 	}
 }
 
-void	get_dimensions(t_vars *vars, char *map_path)
+void	get_dimensions(t_vars *vars, char *map_path, int row)
 {
 	int		fd;
 	char	*line;
-	int		row;
 
-	row = 0;
 	fd = open(map_path, O_RDONLY);
 	check_fd_error(vars, fd, 0);
 	line = get_next_line(fd);
 	check_line_error(vars, line, fd, 0);
-	vars->temp_width = 0;
-	vars->temp_height = 0;
 	while (line)
 	{
 		if (has_special_b(line))

@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:14:55 by apancar           #+#    #+#             */
-/*   Updated: 2024/11/04 20:46:05 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/07 12:33:45 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ void	parse_color(t_vars *vars, char *line, t_color *color, int **flag);
 void	parse_texture(t_vars *vars, char *line,
 			char **texture_path, int **flag);
 void	parse_map(t_vars *vars, char *file_path, int flag, int flagi);
-void	get_dimensions(t_vars *vars, char *map_path);
+void	get_dimensions(t_vars *vars, char *map_path, int row);
 void	create_r_map(t_vars *vars);
 void	check_r_map(t_vars *vars);
 void	get_player_positions(t_vars *vars);
@@ -193,8 +193,8 @@ void	init_vertical_ray(t_raycast *ray, t_vec start, t_vec dir);
 t_vec	hit_vertical(t_vars *vars, t_vec start, t_vec dir, float *dist);
 void	init_horizontal_ray(t_raycast *ray, t_vec start, t_vec dir);
 t_vec	hit_horizontal(t_vars *cub3d, t_vec start, t_vec dir, float *dist);
-void	free_rgb(char **rgb);
-void	dispose_t_map(t_vars *vars);
+void	free_rgb(char **rgb, int flag);
+void	dispose_t_map(t_vars *vars, int flag);
 void	check_flag(t_vars *vars, int ***flag);
 void	free_all(t_vars *vars, int flag);
 t_bool	has_special_b(char *line);

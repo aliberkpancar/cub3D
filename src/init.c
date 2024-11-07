@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:02 by apancar           #+#    #+#             */
-/*   Updated: 2024/11/05 19:31:46 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/07 12:33:35 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ static void	init_variables(t_vars *vars, char *map)
 	vars->player.dir.x = 0.0;
 	vars->player.dir.y = 1.0;
 	vars->player_count = 0;
-	get_dimensions(vars, map);
+	vars->temp_width = 0;
+	vars->temp_height = 0;
+	get_dimensions(vars, map, 0);
 	allocate_t_map(vars);
 	vars->texture.east = NULL;
 	vars->texture.west = NULL;
