@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:14:55 by apancar           #+#    #+#             */
-/*   Updated: 2024/11/07 12:33:45 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/07 15:19:30 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,5 +198,6 @@ void	dispose_t_map(t_vars *vars, int flag);
 void	check_flag(t_vars *vars, int ***flag);
 void	free_all(t_vars *vars, int flag);
 t_bool	has_special_b(char *line);
+void	check_instructions(int i[], int fd, t_vars *vars);
 
 #endif

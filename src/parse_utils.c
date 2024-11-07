@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 11:40:32 by apancar           #+#    #+#             */
-/*   Updated: 2024/11/07 12:44:20 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/07 15:19:58 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,20 @@ void	parse_color(t_vars *vars, char *line, t_color *color, int **flag)
 	color->green = ft_atoi(rgb[1]);
 	color->blue = ft_atoi(rgb[2]);
 	free_rgb(rgb, 0);
+}
+
+void	check_instructions(int i[], int fd, t_vars *vars)
+{
+	int	j;
+
+	j = 0;
+	while (j < 6)
+	{
+		if (i[j] == 0)
+		{
+			close(fd);
+			dispose_t_map(vars, 1);
+		}
+		j++;
+	}
 }

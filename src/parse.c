@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:30 by apancar           #+#    #+#             */
-/*   Updated: 2024/11/07 15:00:57 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/07 15:19:37 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,29 +98,12 @@ static void	check_duplicate_line(char *line, int *i)
 		printf("Error\nDuplicate line\n");
 		exit (1);
 	}
-
-}
-
-static void	check_instructions(int i[], int fd, t_vars *vars)
-{
-	int	j;
-	
-	j = 0;
-	while (j < 6)
-	{
-		if (i[j] == 0)
-		{
-			close(fd);
-			dispose_t_map(vars, 1);
-		}
-		j++;
-	}
 }
 
 void	parse_map(t_vars *vars, char *file_path, int flag, int flagi)
 {
 	int			x;
-	const int	fd = open(file_path, O_RDONLY);;
+	const int	fd = open(file_path, O_RDONLY);
 	char		*line;
 	int			i[6];
 
@@ -139,7 +122,6 @@ void	parse_map(t_vars *vars, char *file_path, int flag, int flagi)
 		if (flag == 1 && flagi == 1 && line && line[0] != '\n')
 		{
 			free(line);
-			close(fd);
 			dispose_t_map(vars, 1);
 		}
 	}
