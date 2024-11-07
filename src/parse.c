@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:30 by apancar           #+#    #+#             */
-/*   Updated: 2024/11/07 12:16:08 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/07 15:00:57 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,8 @@ static void	parse_line(t_vars *vars, char *line, int *x, int *flag)
 	free(line);
 }
 
-static void	check_duplicate_line(char *line, int i[])
+static void	check_duplicate_line(char *line, int *i)
 {
-	ft_bzero(i, 24);
 	if (ft_strncmp(line, "NO ", 3) == 0 && i[0] == 0)
 		i[0] = 1;
 	else if (ft_strncmp(line, "SO ", 3) == 0 && i[1] == 0)
@@ -99,20 +98,37 @@ static void	check_duplicate_line(char *line, int i[])
 		printf("Error\nDuplicate line\n");
 		exit (1);
 	}
+
+}
+
+static void	check_instructions(int i[], int fd, t_vars *vars)
+{
+	int	j;
+	
+	j = 0;
+	while (j < 6)
+	{
+		if (i[j] == 0)
+		{
+			close(fd);
+			dispose_t_map(vars, 1);
+		}
+		j++;
+	}
 }
 
 void	parse_map(t_vars *vars, char *file_path, int flag, int flagi)
 {
-	int		x;
-	int		fd;
-	char	*line;
-	int		i[6];
+	int			x;
+	const int	fd = open(file_path, O_RDONLY);;
+	char		*line;
+	int			i[6];
 
-	fd = open(file_path, O_RDONLY);
 	check_fd_error(vars, fd, 1);
 	line = get_next_line(fd);
 	check_line_error(vars, line, fd, 1);
 	x = 0;
+	ft_bzero(i, 24);
 	while (line)
 	{
 		check_duplicate_line(line, i);
@@ -122,10 +138,11 @@ void	parse_map(t_vars *vars, char *file_path, int flag, int flagi)
 			flagi = 1;
 		if (flag == 1 && flagi == 1 && line && line[0] != '\n')
 		{
-			printf("Error\n");
 			free(line);
-			exit (1);
+			close(fd);
+			dispose_t_map(vars, 1);
 		}
 	}
+	check_instructions(i, fd, vars);
 	close(fd);
 }

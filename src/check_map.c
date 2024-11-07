@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:15:33 by apancar           #+#    #+#             */
-/*   Updated: 2024/11/05 19:34:19 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/07 13:08:51 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	check_char(t_vars *vars, char c)
 		&& c != '*' && c != 'B' && c != '0' && c != ' ' && c != '\t'
 		&& c != '\n' && c != '\0')
 	{
-		printf("Error\nInvalid character in the map: %c\n", c);
+		printf("Error\n");
 		free_t_map(vars);
 		free_r_map(vars);
 		exit(EXIT_FAILURE);

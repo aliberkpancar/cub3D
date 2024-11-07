@@ -6,7 +6,7 @@
 /*   By: apancar <apancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:16:06 by apancar           #+#    #+#             */
-/*   Updated: 2024/11/07 11:42:38 by apancar          ###   ########.fr       */
+/*   Updated: 2024/11/07 12:58:44 by apancar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	destroy(t_vars *vars)
 {
 	free_all(vars, 1);
 	mlx_destroy_window(vars->mlx.mlx, vars->mlx.win.win);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 int	main(int argc, char **argv)
